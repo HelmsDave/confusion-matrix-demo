@@ -34,6 +34,19 @@ public class MetricsMainPanel {
         
         m_subPanels = new ArrayList<>();
         m_subPanels.add(new MetricsPanelAccuracy());
+        m_subPanels.add(new MetricsPanelPrecision());
+        m_subPanels.add(new MetricsPanelRecall());
+        m_subPanels.add(new MetricsPanelFalseDiscoveryRate());
+        m_subPanels.add(new MetricsPanelFalseOmissionRate());
+        m_subPanels.add(new MetricsPanelNegativePredictiveValue());
+        
+        m_subPanels.add(new MetricsPanelPrevalence());
+        m_subPanels.add(new MetricsPanelFalsePositiveRate());
+        m_subPanels.add(new MetricsPanelTrueNegativeRate());
+        m_subPanels.add(new MetricsPanelFalseNegativeRate());
+        
+        
+                
         // TODO add panels
         
         m_tabbedPane = new JTabbedPane();

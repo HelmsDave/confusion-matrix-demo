@@ -21,9 +21,20 @@ public class ColorScheme {
     /** Color of True Negative data. */
     public static final Color TRUE_NEG_COLOR = Color.BLUE;
     /** Color of True Positive data. */
-    public static final Color FALSE_POS_COLOR = Color.YELLOW;
+    public static final Color FALSE_POS_COLOR = Color.ORANGE;
     /** Color of False Negative data. */
     public static final Color FALSE_NEG_COLOR = Color.RED;
     /** Color of threshold division line. */
     public static final Color THRESH_COLOR = Color.BLACK;    
+    
+    /** Color of True Positive data. */
+    public static final String HTML_TRUE_POS_TEXT = "<font color=green>True Positive</font>";
+    /** Color of True Negative data. */
+    public static final String HTML_TRUE_NEG_TEXT = "<font color=blue>True Negative</font>";
+    /** Color of True Positive data. */
+    public static final String HTML_FALSE_POS_TEXT = "<font color=orange>False Positive</font>";
+    /** Color of False Negative data. */
+    public static final String HTML_FALSE_NEG_TEXT = "<font color=red>False Negative</font>";
+
+     
 }

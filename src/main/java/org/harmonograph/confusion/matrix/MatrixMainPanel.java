@@ -79,7 +79,7 @@ public class MatrixMainPanel implements TestResultsListener {
         }           
                 
         {
-            final JLabel label = new JLabel("<html>True<p>Positive</html>");
+            final JLabel label = new JLabel("<html>Actual<p>True<p>Positive</html>");
             final GridBagConstraints c = new GridBagConstraints();
             c.gridx = 2;
             c.gridy = 4;                 
@@ -87,7 +87,7 @@ public class MatrixMainPanel implements TestResultsListener {
             m_panel.add(label, c);
         }     
         {
-            final JLabel label = new JLabel("<html>True<p>Negative</html>");
+            final JLabel label = new JLabel("<html>Actual<p>True<p>Negative</html>");
             final GridBagConstraints c = new GridBagConstraints();
             c.gridx = 2;
             c.gridy = 6;               

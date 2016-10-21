@@ -8,34 +8,34 @@ import org.harmonograph.confusion.messages.ColorScheme;
 import org.harmonograph.confusion.messages.TestResults;
 
 /**
- * MetricsPanel for Accuracy formula.
+ * MetricsPanel for Prevalence formula.
  * @author Dave
  */
-public class MetricsPanelAccuracy extends AbstractMetricsPanel {
+public class MetricsPanelPrevalence extends AbstractMetricsPanel {
       
     /** Simple Constructor. */
-    public MetricsPanelAccuracy() {
-        super("Accuracy");
+    public MetricsPanelPrevalence() {
+        super("Prevalence");
     }
     
     
     /**
-     * Calculate Accuracy.
+     * Calculate Prevalence.
      * @param results Test Results
      * @return Precision
      */
-    protected static float getAccuracy(final TestResults results) {
-       final float accuracy = 
-               (float)(results.getTruePositive() + results.getTrueNegative()) /
+    protected static float getPrevalence(final TestResults results) {
+       final float prevalence = 
+               (float)(results.getTruePositive() + results.getFalseNegative()) /
                        (float)TestResults.POPULATION_SIZE;     
        
-       return accuracy;
+       return prevalence;
     }
     
     /** {@inheritDoc} */
     @Override 
     public float updateGas(final TestResults results) {
-        return getAccuracy(results);
+        return getPrevalence(results);
     }    
     
     /** {@inheritDoc} */
@@ -44,13 +44,13 @@ public class MetricsPanelAccuracy extends AbstractMetricsPanel {
              
         final StringBuilder out = new StringBuilder();
         out.append("<html>");
-        out.append("Accuracy = (").append(ColorScheme.HTML_TRUE_POS_TEXT).append(" + ")
-                   .append(ColorScheme.HTML_TRUE_NEG_TEXT).append(") / Total Population<p>");
+        out.append("Prevalence = (").append(ColorScheme.HTML_TRUE_POS_TEXT).append(" + ")
+                   .append(ColorScheme.HTML_FALSE_NEG_TEXT).append(") / Total Population<p>");
         
         out.append(String.format("%.3f = (%s + %s) / %s<p>",
-               getAccuracy(results), 
+               getPrevalence(results), 
                TestResults.format(results.getTruePositive()),
-               TestResults.format(results.getTrueNegative()),
+               TestResults.format(results.getFalseNegative()),
                TestResults.format(TestResults.POPULATION_SIZE)));
        
         out.append("</html>");
