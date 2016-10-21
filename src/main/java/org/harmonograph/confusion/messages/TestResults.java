@@ -89,6 +89,47 @@ public class TestResults {
         return m_falseNegative;
     }
     
+    /**
+     * Get the number of population actual true.
+     * @return number of population actual true
+     */
+    public int getActualTrue() {
+        return getTruePositive() + getFalseNegative();
+    }    
+    
+    /**
+     * Get the number of population actual false.
+     * @return number of population actual false
+     */
+    public int getActualFalse() {
+        return getTrueNegative() + getFalsePositive();
+    }        
+    
+    /**
+     * Get the number of population predicted true.
+     * @return number of population predicted true
+     */
+    public int getPredictedTrue() {
+        return getTruePositive() + getFalsePositive();
+    }    
+    
+    /**
+     * Get the number of population predicted false.
+     * @return number of population predicted false
+     */
+    public int getPredictedFalse() {
+        return getTrueNegative() + getFalseNegative();
+    }           
+    
+    /**
+     * Get the number of population.
+     * @return number of population
+     */
+    public int getPopulationTotal() {
+        return getActualTrue() + getActualFalse();
+    }           
+    
+    
     /** 
      * Helper to format population value as a pretty 
      * string representing percentage relative

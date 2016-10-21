@@ -5,12 +5,13 @@
 package org.harmonograph.confusion.metrics;
 
 import javax.swing.JPanel;
+import org.harmonograph.confusion.messages.TestResultsListener;
 
 /**
  * Interface for each pane of the Metrics Tab Panel.
  * @author Dave
  */
-public interface MetricsPanel {
+public interface MetricsPanel extends TestResultsListener {
     
     /**
      * Get JPanel. 

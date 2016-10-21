@@ -4,10 +4,13 @@
  */
 package org.harmonograph.confusion.metrics;
 
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
+import org.harmonograph.confusion.messages.TestResultsDistributor;
 
 /**
  * The Metrics panel contains a collection of tabs,
@@ -36,10 +39,21 @@ public class MetricsMainPanel {
         m_tabbedPane = new JTabbedPane();
         for (final MetricsPanel p : m_subPanels) {
             m_tabbedPane.add(p.getName(), p.getPanel());
+            TestResultsDistributor.DISTRIBUTOR.addListener(p);
         }
         
         m_panel = new JPanel();
-        m_panel.add(m_tabbedPane);
+        m_panel.setLayout(new GridBagLayout());
+        {
+            final GridBagConstraints c = new GridBagConstraints();
+            c.gridx = 1;
+            c.gridy = 1;
+            c.gridheight = 2;
+            c.weightx = 0.5f;
+            c.weighty = 0.5f;
+            c.fill = GridBagConstraints.BOTH;
+            m_panel.add(m_tabbedPane, c);        
+        }
     }
     
     /**

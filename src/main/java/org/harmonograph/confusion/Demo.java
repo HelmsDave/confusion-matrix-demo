@@ -17,6 +17,8 @@ public class Demo {
     public static void main( String[] args ) {
 
         SwingUtilities.invokeLater(new Runnable() {
+            /** {@inheritDoc} */
+            @Override            
             public void run() {
                 final MainFrame mainFrame = new MainFrame();
                 final JFrame frame = mainFrame.getFrame();

@@ -36,6 +36,8 @@ public class TestResultsDistributor implements TestResultsListener {
        final List<TestResultsListener> listeners = new ArrayList<>();
        listeners.addAll(m_listeners);
         SwingUtilities.invokeLater(new Runnable() {
+            /** {@inheritDoc} */
+            @Override            
             public void run() {
                 for (final TestResultsListener l: listeners) {
                     try {
