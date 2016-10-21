@@ -14,7 +14,11 @@ import javax.swing.SwingUtilities;
  * @author Dave Helms
  */
 public class Demo {
-    public static void main( String[] args ) {
+    /**
+     * Entry point for demo.
+     * @param args Command line arguments
+     */
+    public static void main(final String[] args) {
 
         SwingUtilities.invokeLater(new Runnable() {
             /** {@inheritDoc} */

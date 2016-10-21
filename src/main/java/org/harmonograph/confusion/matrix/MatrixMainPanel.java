@@ -8,6 +8,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JSeparator;
 import org.harmonograph.confusion.messages.TestResults;
 import org.harmonograph.confusion.messages.TestResultsDistributor;
 import org.harmonograph.confusion.messages.TestResultsListener;
@@ -26,23 +27,32 @@ public class MatrixMainPanel implements TestResultsListener {
     protected TestResults m_testResults = TestResults.DEFAULT;
         
     /** Label for True Positive. */
-    protected final JLabel m_labelTruePos = new JLabel("True Pos");
+    protected final GaugeLabel m_labelTruePos = 
+            new GaugeLabel("True Pos", true, false, false, false);
     /** Label for False Negative. */
-    protected final JLabel m_labelFalseNeg = new JLabel("False Neg");
+    protected final GaugeLabel m_labelFalseNeg = 
+            new GaugeLabel("False Neg", false, false, false, true);
     /** Label for False Positive. */
-    protected final JLabel m_labelFalsePos = new JLabel("False Pos");
+    protected final GaugeLabel m_labelFalsePos = 
+            new GaugeLabel("False Pos", false, false, true, false);
     /** Label for True Negative. */
-    protected final JLabel m_labelTrueNeg = new JLabel("True Neg");
+    protected final GaugeLabel m_labelTrueNeg = 
+            new GaugeLabel("True Neg", false, true, false, false);
     /** Label for Marginal Actual True. */
-    protected final JLabel m_labelMargActTrue = new JLabel("Marg Actual True");
+    protected final GaugeLabel m_labelMargActTrue = 
+            new GaugeLabel("Marg Actual True", true, false, false, true);
     /** Label for Marginal Actual False. */
-    protected final JLabel m_labelMargActFalse = new JLabel("Marg Actual False");
+    protected final GaugeLabel m_labelMargActFalse = 
+            new GaugeLabel("Marg Actual False", false, true, true, false);
     /** Label for Marginal Predicted True. */
-    protected final JLabel m_labelMargPredTrue = new JLabel("Marg Pred True");
+    protected final GaugeLabel m_labelMargPredTrue = 
+            new GaugeLabel("Marg Pred True", true, false, true, false);
     /** Label for Marginal Predicted False. */
-    protected final JLabel m_labelMargPredFalse = new JLabel("Marg Pred False");
+    protected final GaugeLabel m_labelMargPredFalse = 
+            new GaugeLabel("Marg Pred False", false, true, false, true);
     /** Label for Marginal Total. */
-    protected final JLabel m_labelMargTotal = new JLabel("Marg Total");    
+    protected final GaugeLabel m_labelMargTotal = 
+            new GaugeLabel("Marg Total", false, false, false, false);    
     
     /** Simple Constructor. */
     public MatrixMainPanel() {
@@ -50,55 +60,37 @@ public class MatrixMainPanel implements TestResultsListener {
         m_panel = new JPanel();
         m_panel.setLayout(new GridBagLayout());
         
-        // Axis labels
+        // Axis labels          
         {
-            final JLabel label = new JLabel("Predicted");
-            final GridBagConstraints c = new GridBagConstraints();
-            c.gridx = 3;
-            c.gridy = 1;           
-            c.gridwidth = 2;          
-            c.fill = GridBagConstraints.BOTH;
-            m_panel.add(label, c);
-        }           
-        {
-            final JLabel label = new JLabel("Pos");
-            final GridBagConstraints c = new GridBagConstraints();
-            c.gridx = 3;
-            c.gridy = 2;               
-            c.fill = GridBagConstraints.BOTH;
-            m_panel.add(label, c);
-        }     
-        {
-            final JLabel label = new JLabel("Neg");
+            final JLabel label = new JLabel("<html>Predicted<p>Positive</html>");
             final GridBagConstraints c = new GridBagConstraints();
             c.gridx = 4;
             c.gridy = 2;               
             c.fill = GridBagConstraints.BOTH;
             m_panel.add(label, c);
-        }           
-        
+        }     
         {
-            final JLabel label = new JLabel("True");
+            final JLabel label = new JLabel("<html>Predicted<p>Negative</html>");
             final GridBagConstraints c = new GridBagConstraints();
-            c.gridx = 1;
-            c.gridy = 3;
-            c.gridheight = 2;         
+            c.gridx = 6;
+            c.gridy = 2;               
             c.fill = GridBagConstraints.BOTH;
             m_panel.add(label, c);
         }           
+                
         {
-            final JLabel label = new JLabel("Pos");
+            final JLabel label = new JLabel("<html>True<p>Positive</html>");
             final GridBagConstraints c = new GridBagConstraints();
             c.gridx = 2;
-            c.gridy = 3;                 
+            c.gridy = 4;                 
             c.fill = GridBagConstraints.BOTH;
             m_panel.add(label, c);
         }     
         {
-            final JLabel label = new JLabel("Neg");
+            final JLabel label = new JLabel("<html>True<p>Negative</html>");
             final GridBagConstraints c = new GridBagConstraints();
             c.gridx = 2;
-            c.gridy = 4;               
+            c.gridy = 6;               
             c.fill = GridBagConstraints.BOTH;
             m_panel.add(label, c);
         }          
@@ -106,8 +98,8 @@ public class MatrixMainPanel implements TestResultsListener {
         // Main Matrix
         {
             final GridBagConstraints c = new GridBagConstraints();
-            c.gridx = 3;
-            c.gridy = 3;     
+            c.gridx = 4;
+            c.gridy = 4;     
             c.weightx = 0.5f;
             c.weighty = 0.5f;            
             c.fill = GridBagConstraints.BOTH;
@@ -115,7 +107,7 @@ public class MatrixMainPanel implements TestResultsListener {
         }            
         {
             final GridBagConstraints c = new GridBagConstraints();
-            c.gridx = 3;
+            c.gridx = 6;
             c.gridy = 4;     
             c.weightx = 0.5f;
             c.weighty = 0.5f;            
@@ -125,7 +117,7 @@ public class MatrixMainPanel implements TestResultsListener {
         {
             final GridBagConstraints c = new GridBagConstraints();
             c.gridx = 4;
-            c.gridy = 3;     
+            c.gridy = 6;     
             c.weightx = 0.5f;
             c.weighty = 0.5f;            
             c.fill = GridBagConstraints.BOTH;
@@ -133,8 +125,8 @@ public class MatrixMainPanel implements TestResultsListener {
         }  
         {
             final GridBagConstraints c = new GridBagConstraints();
-            c.gridx = 4;
-            c.gridy = 4;     
+            c.gridx = 6;
+            c.gridy = 6;     
             c.weightx = 0.5f;
             c.weighty = 0.5f;            
             c.fill = GridBagConstraints.BOTH;
@@ -144,8 +136,8 @@ public class MatrixMainPanel implements TestResultsListener {
         // Margin
         {
             final GridBagConstraints c = new GridBagConstraints();
-            c.gridx = 5;
-            c.gridy = 3;     
+            c.gridx = 8;
+            c.gridy = 4;     
             c.weightx = 0.5f;
             c.weighty = 0.5f;            
             c.fill = GridBagConstraints.BOTH;
@@ -153,8 +145,8 @@ public class MatrixMainPanel implements TestResultsListener {
         }             
         {
             final GridBagConstraints c = new GridBagConstraints();
-            c.gridx = 5;
-            c.gridy = 4;     
+            c.gridx = 8;
+            c.gridy = 6;     
             c.weightx = 0.5f;
             c.weighty = 0.5f;            
             c.fill = GridBagConstraints.BOTH;
@@ -163,8 +155,8 @@ public class MatrixMainPanel implements TestResultsListener {
         
         {
             final GridBagConstraints c = new GridBagConstraints();
-            c.gridx = 3;
-            c.gridy = 5;     
+            c.gridx = 4;
+            c.gridy = 8;     
             c.weightx = 0.5f;
             c.weighty = 0.5f;            
             c.fill = GridBagConstraints.BOTH;
@@ -172,8 +164,8 @@ public class MatrixMainPanel implements TestResultsListener {
         }             
         {
             final GridBagConstraints c = new GridBagConstraints();
-            c.gridx = 4;
-            c.gridy = 5;     
+            c.gridx = 6;
+            c.gridy = 8;     
             c.weightx = 0.5f;
             c.weighty = 0.5f;            
             c.fill = GridBagConstraints.BOTH;
@@ -182,13 +174,72 @@ public class MatrixMainPanel implements TestResultsListener {
         
         {
             final GridBagConstraints c = new GridBagConstraints();
-            c.gridx = 5;
-            c.gridy = 5;     
+            c.gridx = 8;
+            c.gridy = 8;     
             c.weightx = 0.5f;
             c.weighty = 0.5f;            
             c.fill = GridBagConstraints.BOTH;
             m_panel.add(m_labelMargTotal, c);
-        }        
+        }      
+        
+        // Make a pretty grid
+        {
+            final GridBagConstraints c = new GridBagConstraints();
+            c.gridx = 1;
+            c.gridy = 3;   
+            c.gridwidth = 8;
+            c.weightx = 1f;
+            c.fill = GridBagConstraints.HORIZONTAL;
+            m_panel.add(new JSeparator(JSeparator.HORIZONTAL), c);
+        } 
+        {
+            final GridBagConstraints c = new GridBagConstraints();
+            c.gridx = 1;
+            c.gridy = 5;   
+            c.gridwidth = 8;
+            c.weightx = 1f;
+            c.fill = GridBagConstraints.HORIZONTAL;
+            m_panel.add(new JSeparator(JSeparator.HORIZONTAL), c);
+        }         
+        {
+            final GridBagConstraints c = new GridBagConstraints();
+            c.gridx = 1;
+            c.gridy = 7;   
+            c.gridwidth = 8;
+            c.weightx = 1f;
+            c.fill = GridBagConstraints.HORIZONTAL;
+            m_panel.add(new JSeparator(JSeparator.HORIZONTAL), c);
+        }   
+        
+        {
+            final GridBagConstraints c = new GridBagConstraints();
+            c.gridx = 3;
+            c.gridy = 1;   
+            c.gridheight = 8;
+            c.weighty = 1f;
+            c.fill = GridBagConstraints.VERTICAL;
+            m_panel.add(new JSeparator(JSeparator.VERTICAL), c);
+        }     
+        {
+            final GridBagConstraints c = new GridBagConstraints();
+            c.gridx = 5;
+            c.gridy = 1;   
+            c.gridheight = 8;
+            c.weighty = 1f;
+            c.fill = GridBagConstraints.VERTICAL;
+            m_panel.add(new JSeparator(JSeparator.VERTICAL), c);
+        }    
+        {
+            final GridBagConstraints c = new GridBagConstraints();
+            c.gridx = 7;
+            c.gridy = 1;   
+            c.gridheight = 8;
+            c.weighty = 1f;
+            c.fill = GridBagConstraints.VERTICAL;
+            m_panel.add(new JSeparator(JSeparator.VERTICAL), c);
+        }            
+        
+        
         update();
         TestResultsDistributor.DISTRIBUTOR.addListener(this);
     }
@@ -213,40 +264,50 @@ public class MatrixMainPanel implements TestResultsListener {
      */
     protected void update() {
 
-        m_labelTruePos.setText(
+        m_labelTruePos.setData(
                 String.format("<html>True Pos<p>%s</html>",
-                    TestResults.format(m_testResults.getTruePositive())));
+                    TestResults.format(m_testResults.getTruePositive())),
+                m_testResults);
 
-        m_labelFalseNeg.setText(
+        m_labelFalseNeg.setData(
                 String.format("<html>False Neg<p>%s</html>",
-                    TestResults.format(m_testResults.getFalseNegative())));
+                    TestResults.format(m_testResults.getFalseNegative())),
+                m_testResults);
 
-        m_labelFalsePos.setText(
+        m_labelFalsePos.setData(
                 String.format("<html>False Pos<p>%s</html>",
-                    TestResults.format(m_testResults.getFalsePositive())));
+                    TestResults.format(m_testResults.getFalsePositive())),
+                m_testResults);
 
-        m_labelTrueNeg.setText(
+        m_labelTrueNeg.setData(
                 String.format("<html>True Neg<p>%s</html>",
-                    TestResults.format(m_testResults.getTrueNegative())));
+                    TestResults.format(m_testResults.getTrueNegative())),
+                m_testResults);
 
-        m_labelMargActTrue.setText(
+        m_labelMargActTrue.setData(
                 String.format("<html>Marg Actual True<p>%s</html>",
-                    TestResults.format(m_testResults.getActualTrue())));
+                    TestResults.format(m_testResults.getActualTrue())),
+                m_testResults);
 
-        m_labelMargActFalse.setText(
+        m_labelMargActFalse.setData(
                 String.format("<html>Marg Actual False<p>%s</html>",
-                    TestResults.format(m_testResults.getActualFalse())));
+                    TestResults.format(m_testResults.getActualFalse())),
+                m_testResults);
 
-        m_labelMargPredTrue.setText(
+        m_labelMargPredTrue.setData(
                 String.format("<html>Marg Pred True<p>%s</html>",
-                    TestResults.format(m_testResults.getPredictedTrue())));
+                    TestResults.format(m_testResults.getPredictedTrue())),
+                m_testResults);
 
-        m_labelMargPredFalse.setText(
+        m_labelMargPredFalse.setData(
                 String.format("<html>Marg Pred False<p>%s</html>",
-                    TestResults.format(m_testResults.getPredictedFalse())));
+                    TestResults.format(m_testResults.getPredictedFalse())),
+                m_testResults);
 
-        m_labelMargTotal.setText(
+        m_labelMargTotal.setData(
                 String.format("<html>Marg Total<p>%s</html>", 
-                    TestResults.format(m_testResults.getPopulationTotal())));
+                    TestResults.format(m_testResults.getPopulationTotal())),
+                m_testResults);
+        m_panel.repaint();
     }
 }
