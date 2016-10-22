@@ -34,20 +34,22 @@ public class MetricsMainPanel {
         
         m_subPanels = new ArrayList<>();
         m_subPanels.add(new MetricsPanelAccuracy());
-        m_subPanels.add(new MetricsPanelPrecision());
-        m_subPanels.add(new MetricsPanelRecall());
-        m_subPanels.add(new MetricsPanelFalseDiscoveryRate());
-        m_subPanels.add(new MetricsPanelFalseOmissionRate());
-        m_subPanels.add(new MetricsPanelNegativePredictiveValue());
-        
         m_subPanels.add(new MetricsPanelPrevalence());
-        m_subPanels.add(new MetricsPanelFalsePositiveRate());
+       
+        m_subPanels.add(new MetricsPanelPositivePredictedValue());
         m_subPanels.add(new MetricsPanelTrueNegativeRate());
+        m_subPanels.add(new MetricsPanelTruePositiveRate());
+        
+        m_subPanels.add(new MetricsPanelFalseDiscoveryRate());
         m_subPanels.add(new MetricsPanelFalseNegativeRate());
+        m_subPanels.add(new MetricsPanelFalseOmissionRate());
+        m_subPanels.add(new MetricsPanelFalsePositiveRate());        
         
-        
-                
-        // TODO add panels
+        m_subPanels.add(new MetricsPanelPositiveLikelihoodRatio());  
+        m_subPanels.add(new MetricsPanelNegativeLikelihoodRatio());    
+        m_subPanels.add(new MetricsPanelDiagnosticOddsRatio());
+       
+        // Add any new panels here
         
         m_tabbedPane = new JTabbedPane();
         for (final MetricsPanel p : m_subPanels) {

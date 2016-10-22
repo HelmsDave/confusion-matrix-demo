@@ -104,6 +104,7 @@ public class MatrixMainPanel implements TestResultsListener {
             c.weighty = 0.5f;            
             c.fill = GridBagConstraints.BOTH;
             m_panel.add(m_labelTruePos, c);
+            m_labelTruePos.setToolTipText("<html>True Positive (TP)<p>Hit</html>");
         }            
         {
             final GridBagConstraints c = new GridBagConstraints();
@@ -113,6 +114,7 @@ public class MatrixMainPanel implements TestResultsListener {
             c.weighty = 0.5f;            
             c.fill = GridBagConstraints.BOTH;
             m_panel.add(m_labelFalseNeg, c);
+            m_labelFalseNeg.setToolTipText("<html>False Negative (FN)<p>Miss<p>Type II error</html>");
         }  
         {
             final GridBagConstraints c = new GridBagConstraints();
@@ -122,6 +124,7 @@ public class MatrixMainPanel implements TestResultsListener {
             c.weighty = 0.5f;            
             c.fill = GridBagConstraints.BOTH;
             m_panel.add(m_labelFalsePos, c);
+            m_labelFalsePos.setToolTipText("<html>False Positive (FP)<p>false alarm<p>Type I error</html>");
         }  
         {
             final GridBagConstraints c = new GridBagConstraints();
@@ -131,6 +134,7 @@ public class MatrixMainPanel implements TestResultsListener {
             c.weighty = 0.5f;            
             c.fill = GridBagConstraints.BOTH;
             m_panel.add(m_labelTrueNeg, c);
+            m_labelTrueNeg.setToolTipText("<html>True Negative (TN)<p>Correct rejection</html>");
         }          
         
         // Margin

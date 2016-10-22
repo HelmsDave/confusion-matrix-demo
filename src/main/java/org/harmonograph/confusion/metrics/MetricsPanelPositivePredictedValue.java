@@ -8,34 +8,34 @@ import org.harmonograph.confusion.messages.ColorScheme;
 import org.harmonograph.confusion.messages.TestResults;
 
 /**
- * MetricsPanel for Recall formula.
+ * MetricsPanel for Positive Predicted Value formula.
  * @author Dave
  */
-public class MetricsPanelRecall extends AbstractMetricsPanel {
+public class MetricsPanelPositivePredictedValue extends AbstractMetricsPanel {
       
     /** Simple Constructor. */
-    public MetricsPanelRecall() {
-        super("Recall");
+    public MetricsPanelPositivePredictedValue() {
+        super("Positive Predicted Value");
     }
     
     /**
-     * Calculate Recall.
+     * Calculate PPV.
      * @param results Test Results
-     * @return Recall
+     * @return PPV
      */
-    protected static float getRecall(final TestResults results) {
-       final float recall = 
+    protected static float getPPV(final TestResults results) {
+       final float ppv = 
                (float)(results.getTruePositive() /
-                ((float)results.getTruePositive() + (float)results.getFalseNegative()));
+                ((float)results.getTruePositive() + (float)results.getFalsePositive()));  
        
-       return recall;
+       return ppv;
     }
     
     /** {@inheritDoc} */
     @Override 
     public float updateGas(final TestResults results) {
-        return getRecall(results);
-    }    
+        return getPPV(results);
+    }
     
     /** {@inheritDoc} */
     @Override    
@@ -43,16 +43,16 @@ public class MetricsPanelRecall extends AbstractMetricsPanel {
         
         final StringBuilder out = new StringBuilder();
         out.append("<html>");
-        out.append("Recall, aka. Sensitivity, True Positive Rate<p>");
-        out.append("Recall = ").append(ColorScheme.HTML_TRUE_POS_TEXT).append(" / (")
+        out.append("Positive Predicted Value (PPV), aka. Precision<p>");
+        out.append("PPV = ").append(ColorScheme.HTML_TRUE_POS_TEXT).append(" / (")
                    .append(ColorScheme.HTML_TRUE_POS_TEXT).append(" + ")
-                   .append(ColorScheme.HTML_FALSE_NEG_TEXT).append(")<p>");
+                   .append(ColorScheme.HTML_FALSE_POS_TEXT).append(")<p>");
         
         out.append(String.format("%.3f = %s / (%s + %s)<p>",
-               getRecall(results), 
+               getPPV(results),
                TestResults.format(results.getTruePositive()),
                TestResults.format(results.getTruePositive()),
-               TestResults.format(results.getFalseNegative())));
+               TestResults.format(results.getFalsePositive())));
        
         out.append("</html>");
         return out.toString();        

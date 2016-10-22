@@ -8,7 +8,7 @@ import org.harmonograph.confusion.messages.ColorScheme;
 import org.harmonograph.confusion.messages.TestResults;
 
 /**
- * MetricsPanel for False Positive Rate Value formula.
+ * MetricsPanel for False Positive Rate formula.
  * @author Dave
  */
 public class MetricsPanelFalsePositiveRate extends AbstractMetricsPanel {
@@ -19,9 +19,9 @@ public class MetricsPanelFalsePositiveRate extends AbstractMetricsPanel {
     }
     
     /**
-     * Calculate FalsePositiveRate.
+     * Calculate Positive Likelihood Ratio.
      * @param results Test Results
-     * @return Precision
+     * @return Positive Likelihood Ratio
      */
     protected static float getFPR(final TestResults results) {
        final float fpr = 
