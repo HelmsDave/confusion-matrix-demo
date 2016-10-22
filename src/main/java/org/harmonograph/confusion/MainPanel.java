@@ -7,19 +7,22 @@ package org.harmonograph.confusion;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import javax.swing.JFrame;
+import javax.swing.JPanel;
 import org.harmonograph.confusion.matrix.MatrixMainPanel;
 import org.harmonograph.confusion.metrics.MetricsMainPanel;
 import org.harmonograph.confusion.threshold.ThresholdMainPanel;
 
 /**
- * Top Level Frame for demo application.
+ * Top Level Panel for Demo application
+ * shared between standalone application
+ * and Applet.
+ * 
  * @author Dave
  */
-public class MainFrame {
+public class MainPanel {
     
-    /** Top level frame for demo application. */
-    protected final JFrame m_frame;
+    /** Top level panel for demo application. */
+    protected final JPanel m_panel;
    
     /** Threshold panel, top left. */
     protected final ThresholdMainPanel m_thresholdPanel;
@@ -31,12 +34,12 @@ public class MainFrame {
     protected final MetricsMainPanel m_metricsPanel;
     
     /** Simple constructor. Simply holds main panels. */
-    public MainFrame() {
+    public MainPanel() {
         
-        m_frame = new JFrame("Confusion Matrix Demo");
-        m_frame.setMinimumSize(new Dimension(400, 400));
-        
-        m_frame.setLayout(new GridBagLayout());
+        m_panel = new JPanel();
+        m_panel.setMinimumSize(new Dimension(400, 400));
+       
+        m_panel.setLayout(new GridBagLayout());
         
         {
             m_thresholdPanel = new ThresholdMainPanel();
@@ -47,7 +50,7 @@ public class MainFrame {
             c.weightx = 0.5f;
             c.weighty = 0.5f;
             c.fill = GridBagConstraints.BOTH;
-            m_frame.add(m_thresholdPanel.getPanel(), c);
+            m_panel.add(m_thresholdPanel.getPanel(), c);
         }
         
         {
@@ -58,7 +61,7 @@ public class MainFrame {
             c.weightx = 0.5f;
             c.weighty = 0.5f;            
             c.fill = GridBagConstraints.BOTH;
-            m_frame.add(m_matrixPanel.getPanel(), c);
+            m_panel.add(m_matrixPanel.getPanel(), c);
         }        
         
         {
@@ -69,16 +72,17 @@ public class MainFrame {
             c.weightx = 0.5f;
             c.weighty = 0.5f;            
             c.fill = GridBagConstraints.BOTH;
-            m_frame.add(m_metricsPanel.getPanel(), c);
+            m_panel.add(m_metricsPanel.getPanel(), c);
         }         
     }
     
+    
     /**
-     * Get JFrame.
-     * @return JFrame
+     * Get JPanel
+     * @return JPanel
      */
-    public JFrame getFrame() {
-        return m_frame;
-    }
+    public JPanel getPanel() {
+        return m_panel;
+    }        
     
 }
