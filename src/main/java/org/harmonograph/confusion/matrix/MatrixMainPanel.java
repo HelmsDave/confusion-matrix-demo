@@ -6,9 +6,11 @@ package org.harmonograph.confusion.matrix;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
+import javax.swing.border.TitledBorder;
 import org.harmonograph.confusion.messages.TestResults;
 import org.harmonograph.confusion.messages.TestResultsDistributor;
 import org.harmonograph.confusion.messages.TestResultsListener;
@@ -60,6 +62,11 @@ public class MatrixMainPanel implements TestResultsListener {
         m_panel = new JPanel();
         m_panel.setLayout(new GridBagLayout());
         
+        final TitledBorder title = BorderFactory.createTitledBorder("Confusion Matrix");
+        m_panel.setBorder(title);            
+        
+        m_panel.setToolTipText("<html>Confusion Matrix</html>");
+        
         // Axis labels          
         {
             final JLabel label = new JLabel("<html>Predicted<p>Positive</html>");
@@ -68,6 +75,7 @@ public class MatrixMainPanel implements TestResultsListener {
             c.gridy = 2;               
             c.fill = GridBagConstraints.BOTH;
             m_panel.add(label, c);
+            label.setToolTipText("Predicted Condition");
         }     
         {
             final JLabel label = new JLabel("<html>Predicted<p>Negative</html>");
@@ -76,6 +84,7 @@ public class MatrixMainPanel implements TestResultsListener {
             c.gridy = 2;               
             c.fill = GridBagConstraints.BOTH;
             m_panel.add(label, c);
+            label.setToolTipText("Predicted Condition");
         }           
                 
         {
@@ -85,6 +94,7 @@ public class MatrixMainPanel implements TestResultsListener {
             c.gridy = 4;                 
             c.fill = GridBagConstraints.BOTH;
             m_panel.add(label, c);
+            label.setToolTipText("Acutal Condition");
         }     
         {
             final JLabel label = new JLabel("<html>Actual<p>True<p>Negative</html>");
@@ -93,6 +103,7 @@ public class MatrixMainPanel implements TestResultsListener {
             c.gridy = 6;               
             c.fill = GridBagConstraints.BOTH;
             m_panel.add(label, c);
+            label.setToolTipText("Acutal Condition");
         }          
         
         // Main Matrix
@@ -104,7 +115,8 @@ public class MatrixMainPanel implements TestResultsListener {
             c.weighty = 0.5f;            
             c.fill = GridBagConstraints.BOTH;
             m_panel.add(m_labelTruePos, c);
-            m_labelTruePos.setToolTipText("<html>True Positive (TP)<p>Hit</html>");
+            m_labelTruePos.setToolTipText(
+                    "<html>True Positive (TP)<p>Detection<p>Hit</html>");
         }            
         {
             final GridBagConstraints c = new GridBagConstraints();
@@ -124,7 +136,7 @@ public class MatrixMainPanel implements TestResultsListener {
             c.weighty = 0.5f;            
             c.fill = GridBagConstraints.BOTH;
             m_panel.add(m_labelFalsePos, c);
-            m_labelFalsePos.setToolTipText("<html>False Positive (FP)<p>false alarm<p>Type I error</html>");
+            m_labelFalsePos.setToolTipText("<html>False Positive (FP)<p>False Alarm<p>Type I error</html>");
         }  
         {
             final GridBagConstraints c = new GridBagConstraints();
@@ -134,7 +146,7 @@ public class MatrixMainPanel implements TestResultsListener {
             c.weighty = 0.5f;            
             c.fill = GridBagConstraints.BOTH;
             m_panel.add(m_labelTrueNeg, c);
-            m_labelTrueNeg.setToolTipText("<html>True Negative (TN)<p>Correct rejection</html>");
+            m_labelTrueNeg.setToolTipText("<html>True Negative (TN)<p>Correct Rejection</html>");
         }          
         
         // Margin
@@ -146,6 +158,7 @@ public class MatrixMainPanel implements TestResultsListener {
             c.weighty = 0.5f;            
             c.fill = GridBagConstraints.BOTH;
             m_panel.add(m_labelMargActTrue, c);
+            m_labelMargActTrue.setToolTipText("Actual Condition True");
         }             
         {
             final GridBagConstraints c = new GridBagConstraints();
@@ -155,6 +168,8 @@ public class MatrixMainPanel implements TestResultsListener {
             c.weighty = 0.5f;            
             c.fill = GridBagConstraints.BOTH;
             m_panel.add(m_labelMargActFalse, c);
+            m_labelMargActFalse.setToolTipText("Actual Condition False");
+
         }              
         
         {
@@ -165,6 +180,7 @@ public class MatrixMainPanel implements TestResultsListener {
             c.weighty = 0.5f;            
             c.fill = GridBagConstraints.BOTH;
             m_panel.add(m_labelMargPredTrue, c);
+            m_labelMargPredTrue.setToolTipText("Predicted Condition True");
         }             
         {
             final GridBagConstraints c = new GridBagConstraints();
@@ -174,6 +190,7 @@ public class MatrixMainPanel implements TestResultsListener {
             c.weighty = 0.5f;            
             c.fill = GridBagConstraints.BOTH;
             m_panel.add(m_labelMargPredFalse, c);
+            m_labelMargPredFalse.setToolTipText("Predicted Condition False");
         }             
         
         {
@@ -184,6 +201,8 @@ public class MatrixMainPanel implements TestResultsListener {
             c.weighty = 0.5f;            
             c.fill = GridBagConstraints.BOTH;
             m_panel.add(m_labelMargTotal, c);
+            m_labelMargTotal.setToolTipText(
+                    "<html>Total Population<p>Sum of Margins<html>");
         }      
         
         // Make a pretty grid

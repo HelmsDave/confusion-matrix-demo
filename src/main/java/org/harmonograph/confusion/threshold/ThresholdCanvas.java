@@ -141,10 +141,9 @@ public class ThresholdCanvas {
         for (int y = thresh; y < m_canvas.getHeight(); ++y) {
             g2d.drawLine(signalAt(y), h-y, signalAt(y), h-y);
         }  
-       
-        
+          
         g2d.setColor(ColorScheme.THRESH_COLOR);
-        g2d.drawLine(0, h-thresh, m_canvas.getWidth(), h-thresh);         
+        g2d.fillRect(0, (h-thresh)-1, m_canvas.getWidth(), 3);         
     }
    
     /** 

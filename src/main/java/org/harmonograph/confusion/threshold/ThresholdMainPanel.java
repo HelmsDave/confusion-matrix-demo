@@ -7,6 +7,8 @@ package org.harmonograph.confusion.threshold;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import javax.swing.JPanel;
+import javax.swing.BorderFactory; 
+import javax.swing.border.TitledBorder;
 
 /**
  * The Threshold Panel shows a plot of the signal 
@@ -31,6 +33,12 @@ public class ThresholdMainPanel {
         
         m_panel = new JPanel();
         m_panel.setLayout(new GridBagLayout());
+        
+        final TitledBorder title = BorderFactory.createTitledBorder("Measurement");
+        m_panel.setBorder(title);        
+        m_panel.setToolTipText(
+                "<html>Measurement Space<p>with Noise and Signal PDF<p>" + 
+                        "Adjust sliders to change PDF and Threshold</html>");
         
         {
             m_canvas = new ThresholdCanvas();

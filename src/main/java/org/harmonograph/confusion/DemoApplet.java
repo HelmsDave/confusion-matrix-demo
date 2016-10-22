@@ -5,21 +5,27 @@
 package org.harmonograph.confusion;
 
 import java.applet.Applet;
+import javax.swing.SwingUtilities;
 
 /**
  * Applet entrypoint for demo.
  * @author Dave
  */
 public class DemoApplet extends Applet {
-
-    /** Main content Panel. */
-    protected MainPanel m_mainPanel;   
-    
     
     @Override
     public void init() {
-        m_mainPanel = new MainPanel();
-        add(m_mainPanel.getPanel());   
+        
+        try {
+            SwingUtilities.invokeAndWait(new Runnable() {
+                public void run() {
+                    final MainPanel m_mainPanel = new MainPanel();
+                    add(m_mainPanel.getPanel());
+                }
+            });
+        } catch (Exception e) {
+            System.err.println("createGUI didn't complete successfully");
+        }          
     }
     
 }

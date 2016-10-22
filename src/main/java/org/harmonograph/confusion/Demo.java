@@ -1,5 +1,4 @@
 /**
- * Simple Java demo of Confusion Matrix and related concepts.
  * (C) 2016 by Dave Helms (dave.helms.home@gmail.com)
  * Released under the GPL 3.
  */
@@ -12,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
 /**
+ * Simple Java demo of Confusion Matrix and related concepts.
  * Standalone entrypoint for demo.
  * All logic in demo is confined to AWT Event thread.
  * @author Dave Helms
