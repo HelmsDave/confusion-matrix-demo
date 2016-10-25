@@ -36,5 +36,13 @@ public class ColorScheme {
     /** Color of False Negative data. */
     public static final String HTML_FALSE_NEG_TEXT = "<font color=red>False Negative</font>";
 
-     
+    /** Color of True Positive data. */
+    public static final String HTML_TRUE_POS_TEXT_SHORT = "<font color=green>TP</font>";
+    /** Color of True Negative data. */
+    public static final String HTML_TRUE_NEG_TEXT_SHORT = "<font color=blue>TN</font>";
+    /** Color of True Positive data. */
+    public static final String HTML_FALSE_POS_TEXT_SHORT = "<font color=orange>FP</font>";
+    /** Color of False Negative data. */
+    public static final String HTML_FALSE_NEG_TEXT_SHORT = "<font color=red>FN</font>";
+   
 }

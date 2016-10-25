@@ -48,6 +48,9 @@ public class MetricsMainPanel {
         m_subPanels.add(new MetricsPanelPositiveLikelihoodRatio());  
         m_subPanels.add(new MetricsPanelNegativeLikelihoodRatio());    
         m_subPanels.add(new MetricsPanelDiagnosticOddsRatio());
+        m_subPanels.add(new MetricsPanelF1Score());
+        m_subPanels.add(new MetricsPanelMattCorrCoef());
+        
        
         // Add any new panels here
         

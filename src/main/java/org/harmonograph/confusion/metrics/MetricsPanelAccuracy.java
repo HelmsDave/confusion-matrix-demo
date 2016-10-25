@@ -6,6 +6,7 @@ package org.harmonograph.confusion.metrics;
 
 import org.harmonograph.confusion.messages.ColorScheme;
 import org.harmonograph.confusion.messages.TestResults;
+import org.harmonograph.confusion.metrics.InfoGraphic.Elements;
 
 /**
  * MetricsPanel for Accuracy formula.
@@ -22,7 +23,7 @@ public class MetricsPanelAccuracy extends AbstractMetricsPanel {
     /**
      * Calculate Accuracy.
      * @param results Test Results
-     * @return Precision
+     * @return Accuracy
      */
     protected static float getAccuracy(final TestResults results) {
        final float accuracy = 
@@ -36,6 +37,15 @@ public class MetricsPanelAccuracy extends AbstractMetricsPanel {
     @Override 
     public float updateGas(final TestResults results) {
         return getAccuracy(results);
+    }    
+    
+    /** {@inheritDoc} */
+    @Override     
+    public Elements[] updateGraphic() {
+        return new Elements[] {
+            Elements.NUM_TRUE_POS, Elements.NUM_TRUE_NEG,
+            Elements.DENOM_FALSE_NEG, Elements.DENOM_FALSE_POS,
+            Elements.DENOM_TRUE_NEG, Elements.DENOM_TRUE_POS};
     }    
     
     /** {@inheritDoc} */

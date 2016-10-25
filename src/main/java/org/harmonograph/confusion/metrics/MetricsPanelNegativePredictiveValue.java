@@ -37,6 +37,15 @@ public class MetricsPanelNegativePredictiveValue extends AbstractMetricsPanel {
         return getNPV(results);
     }       
     
+   /** {@inheritDoc} */
+    @Override     
+    public InfoGraphic.Elements[] updateGraphic() {
+        return new InfoGraphic.Elements[] {
+            InfoGraphic.Elements.NUM_TRUE_NEG,
+            InfoGraphic.Elements.DENOM_TRUE_NEG,
+            InfoGraphic.Elements.DENOM_FALSE_NEG};
+    }     
+    
     /** {@inheritDoc} */
     @Override    
     public String updateLabelString(final TestResults results) {

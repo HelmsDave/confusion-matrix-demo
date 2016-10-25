@@ -38,6 +38,15 @@ public class MetricsPanelTruePositiveRate extends AbstractMetricsPanel {
     }    
     
     /** {@inheritDoc} */
+    @Override     
+    public InfoGraphic.Elements[] updateGraphic() {
+        return new InfoGraphic.Elements[] {
+            InfoGraphic.Elements.NUM_TRUE_POS,
+            InfoGraphic.Elements.DENOM_FALSE_NEG,
+            InfoGraphic.Elements.DENOM_TRUE_POS};
+    }          
+    
+    /** {@inheritDoc} */
     @Override    
     public String updateLabelString(final TestResults results) {
         

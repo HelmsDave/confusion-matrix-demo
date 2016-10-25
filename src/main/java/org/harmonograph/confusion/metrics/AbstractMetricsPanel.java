@@ -10,6 +10,7 @@ import java.awt.GridBagLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import org.harmonograph.confusion.messages.TestResults;
+import org.harmonograph.confusion.metrics.InfoGraphic.Elements;
 
 /**
  * Utility abstract metrics panel,
@@ -42,6 +43,7 @@ public abstract class AbstractMetricsPanel implements MetricsPanel {
         m_name = name;
         m_panel = new JPanel();
         m_panel.setLayout(new GridBagLayout());
+        
         {
             m_label = new JLabel();
             final GridBagConstraints c = new GridBagConstraints();
@@ -51,12 +53,27 @@ public abstract class AbstractMetricsPanel implements MetricsPanel {
             c.weighty = 1f;
             c.fill = GridBagConstraints.BOTH;
             m_panel.add(m_label, c);
-        }       
+      }       
+        
+      { 
+            final Elements[] elements = updateGraphic();
+            if (elements.length > 0) {
+                final InfoGraphic graphic = new InfoGraphic(elements);
+
+                final GridBagConstraints c = new GridBagConstraints();
+                c.gridx = 2;
+                c.gridy = 1;
+                c.weightx = .1f;
+                c.weighty = .1f;                
+                //c.fill = GridBagConstraints.BOTH;
+                m_panel.add(graphic.getPanel(), c);
+            }
+        }           
         
         {
             m_gas = new GasGauge(Color.CYAN);
             final GridBagConstraints c = new GridBagConstraints();
-            c.gridx = 2;
+            c.gridx = 3;
             c.gridy = 1;
             c.weighty = 1f;
             c.weighty = .1f;
@@ -95,6 +112,15 @@ public abstract class AbstractMetricsPanel implements MetricsPanel {
      */
     public float updateGas(final TestResults testResults) {
         return 0f;
+    }
+    
+    /** 
+     * Get data for graphic. 
+     * 
+     * @return Graphic elements
+     */
+    public InfoGraphic.Elements[] updateGraphic() {
+        return new InfoGraphic.Elements[] {};
     }
     
     /** {@inheritDoc} */

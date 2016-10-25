@@ -36,6 +36,15 @@ public class MetricsPanelFalseNegativeRate extends AbstractMetricsPanel {
     public float updateGas(final TestResults results) {
         return getFNR(results);
     }       
+
+    /** {@inheritDoc} */
+    @Override     
+    public InfoGraphic.Elements[] updateGraphic() {
+        return new InfoGraphic.Elements[] {
+            InfoGraphic.Elements.NUM_FALSE_NEG,
+            InfoGraphic.Elements.DENOM_TRUE_POS,
+            InfoGraphic.Elements.DENOM_FALSE_NEG};
+    }     
     
     /** {@inheritDoc} */
     @Override    

@@ -47,7 +47,7 @@ public class MainPanel {
             c.gridx = 1;
             c.gridy = 1;
             c.gridheight = 2;
-            c.weightx = 0.5f;
+            c.weightx = 0.3f;
             c.weighty = 0.5f;
             c.fill = GridBagConstraints.BOTH;
             m_panel.add(m_thresholdPanel.getPanel(), c);
@@ -58,7 +58,7 @@ public class MainPanel {
             final GridBagConstraints c = new GridBagConstraints();
             c.gridx = 2;
             c.gridy = 1;
-            c.weightx = 0.5f;
+            c.weightx = 0.7f;
             c.weighty = 0.5f;            
             c.fill = GridBagConstraints.BOTH;
             m_panel.add(m_matrixPanel.getPanel(), c);
@@ -69,7 +69,7 @@ public class MainPanel {
             final GridBagConstraints c = new GridBagConstraints();
             c.gridx = 2;
             c.gridy = 2;
-            c.weightx = 0.5f;
+            c.weightx = 0.7f;
             c.weighty = 0.5f;            
             c.fill = GridBagConstraints.BOTH;
             m_panel.add(m_metricsPanel.getPanel(), c);
