@@ -2,10 +2,11 @@
  * (C) 2016 by Dave Helms (dave.helms.home@gmail.com)
  *  Released under the GPL 3.
  */
-package org.harmonograph.confusion.metrics;
+package org.harmonograph.confusion.metrics.simple;
 
 import org.harmonograph.confusion.messages.ColorScheme;
 import org.harmonograph.confusion.messages.TestResults;
+import org.harmonograph.confusion.metrics.AbstractMetricsPanel;
 
 /**
  * MetricsPanel for False Omission Rate formula.
@@ -23,7 +24,7 @@ public class MetricsPanelFalseOmissionRate extends AbstractMetricsPanel {
      * @param results Test Results
      * @return Precision
      */
-    protected static float getFOR(final TestResults results) {
+    public static float getFOR(final TestResults results) {
        final float falseOmissionTate = 
                (float)(results.getFalseNegative() /
                 ((float)results.getTrueNegative() + (float)results.getFalseNegative()));

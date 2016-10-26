@@ -5,6 +5,7 @@
 package org.harmonograph.confusion.threshold;
 
 
+import org.harmonograph.confusion.messages.Threshold;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -62,8 +63,8 @@ public class ThresholdCanvas {
      */
     private int noiseAt(final float p) {
        final float x = p * (float)Threshold.MAX / (float)m_canvas.getHeight();
-       final float prob = GaussUtil.pdf(x, m_thresh.m_noiseMean, m_thresh.m_noiseStdDev);    
-       return (int)((1f/MAX_PDF_HEIGHT) * m_thresh.m_noiseStdDev * prob * (float)m_canvas.getWidth());
+       final float prob = GaussUtil.pdf(x, m_thresh.getNoiseMean(), m_thresh.getNoiseStdDev());    
+       return (int)((1f/MAX_PDF_HEIGHT) * m_thresh.getNoiseStdDev() * prob * (float)m_canvas.getWidth());
     }
     
     /** 
@@ -155,27 +156,8 @@ public class ThresholdCanvas {
     public void setThresholdData(final Threshold thresh) {
         m_thresh = thresh;
         m_canvas.repaint();
-
-        final float proportionOfNoiseBelowThresh = 
-            GaussUtil.cdf(thresh.getThreshold(), 
-                    thresh.getNoiseMean(), thresh.getNoiseStdDev());
-        final float proportionOfSignalBelowThresh = 
-            GaussUtil.cdf(thresh.getThreshold(), 
-                    thresh.getSignalMean(), thresh.getSignalStdDev());
         
-        final float skew = Math.max(thresh.getSkew(), 1f);
-        final int signalPopulation = 
-                (int)((float)TestResults.POPULATION_SIZE * .5f / skew);
-        final int noisePopulation = TestResults.POPULATION_SIZE - signalPopulation;
-        
-        final int trueNegative = (int)(noisePopulation * proportionOfNoiseBelowThresh);
-        final int falsePositive = noisePopulation - trueNegative;
-        
-        final int falseNegative = (int)(signalPopulation * proportionOfSignalBelowThresh);
-        final int truePositive = signalPopulation - falseNegative;
-        
-        final TestResults results = new TestResults(
-            truePositive, trueNegative, falsePositive, falseNegative);   
+        final TestResults results = CalculateResultsUtil.calculateResults(thresh);
         
         TestResultsDistributor.DISTRIBUTOR.processTestResults(results);    
     }

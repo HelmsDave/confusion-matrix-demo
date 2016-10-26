@@ -2,10 +2,11 @@
  * (C) 2016 by Dave Helms (dave.helms.home@gmail.com)
  *  Released under the GPL 3.
  */
-package org.harmonograph.confusion.metrics;
+package org.harmonograph.confusion.metrics.simple;
 
 import org.harmonograph.confusion.messages.ColorScheme;
 import org.harmonograph.confusion.messages.TestResults;
+import org.harmonograph.confusion.metrics.AbstractMetricsPanel;
 
 /**
  * MetricsPanel for False Positive Rate formula.
@@ -23,7 +24,7 @@ public class MetricsPanelFalsePositiveRate extends AbstractMetricsPanel {
      * @param results Test Results
      * @return Positive Likelihood Ratio
      */
-    protected static float getFPR(final TestResults results) {
+    public static float getFPR(final TestResults results) {
        final float fpr = 
                (float)(results.getFalsePositive() /
                 ((float)results.getTrueNegative() + (float)results.getFalsePositive()));

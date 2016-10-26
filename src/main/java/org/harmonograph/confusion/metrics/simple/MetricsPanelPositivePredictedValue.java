@@ -2,49 +2,50 @@
  * (C) 2016 by Dave Helms (dave.helms.home@gmail.com)
  *  Released under the GPL 3.
  */
-package org.harmonograph.confusion.metrics;
+package org.harmonograph.confusion.metrics.simple;
 
 import org.harmonograph.confusion.messages.ColorScheme;
 import org.harmonograph.confusion.messages.TestResults;
+import org.harmonograph.confusion.metrics.AbstractMetricsPanel;
 
 /**
- * MetricsPanel for True Positive Rate formula.
+ * MetricsPanel for Positive Predicted Value formula.
  * @author Dave
  */
-public class MetricsPanelTruePositiveRate extends AbstractMetricsPanel {
+public class MetricsPanelPositivePredictedValue extends AbstractMetricsPanel {
       
     /** Simple Constructor. */
-    public MetricsPanelTruePositiveRate() {
-        super("True Positive Rate");
+    public MetricsPanelPositivePredictedValue() {
+        super("Positive Predicted Value");
     }
     
     /**
-     * Calculate Recall.
+     * Calculate PPV.
      * @param results Test Results
-     * @return Recall
+     * @return PPV
      */
-    protected static float getTPR(final TestResults results) {
-       final float tpr = 
+    public static float getPPV(final TestResults results) {
+       final float ppv = 
                (float)(results.getTruePositive() /
-                ((float)results.getTruePositive() + (float)results.getFalseNegative()));
+                ((float)results.getTruePositive() + (float)results.getFalsePositive()));  
        
-       return tpr;
+       return ppv;
     }
     
     /** {@inheritDoc} */
     @Override 
     public float updateGas(final TestResults results) {
-        return getTPR(results);
-    }    
+        return getPPV(results);
+    }
     
     /** {@inheritDoc} */
     @Override     
     public InfoGraphic.Elements[] updateGraphic() {
         return new InfoGraphic.Elements[] {
             InfoGraphic.Elements.NUM_TRUE_POS,
-            InfoGraphic.Elements.DENOM_FALSE_NEG,
-            InfoGraphic.Elements.DENOM_TRUE_POS};
-    }          
+            InfoGraphic.Elements.DENOM_TRUE_POS,
+            InfoGraphic.Elements.DENOM_FALSE_POS};
+    }     
     
     /** {@inheritDoc} */
     @Override    
@@ -52,16 +53,16 @@ public class MetricsPanelTruePositiveRate extends AbstractMetricsPanel {
         
         final StringBuilder out = new StringBuilder();
         out.append("<html>");
-        out.append("Recall, aka. Sensitivity, True Positive Rate<p>");
-        out.append("Recall = ").append(ColorScheme.HTML_TRUE_POS_TEXT).append(" / (")
+        out.append("Positive Predicted Value (PPV), aka. Precision<p>");
+        out.append("PPV = ").append(ColorScheme.HTML_TRUE_POS_TEXT).append(" / (")
                    .append(ColorScheme.HTML_TRUE_POS_TEXT).append(" + ")
-                   .append(ColorScheme.HTML_FALSE_NEG_TEXT).append(")<p>");
+                   .append(ColorScheme.HTML_FALSE_POS_TEXT).append(")<p>");
         
         out.append(String.format("%.3f = %s / (%s + %s)<p>",
-               getTPR(results), 
+               getPPV(results),
                TestResults.format(results.getTruePositive()),
                TestResults.format(results.getTruePositive()),
-               TestResults.format(results.getFalseNegative())));
+               TestResults.format(results.getFalsePositive())));
        
         out.append("</html>");
         return out.toString();        

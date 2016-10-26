@@ -2,25 +2,21 @@
  * (C) 2016 by Dave Helms (dave.helms.home@gmail.com)
  *  Released under the GPL 3.
  */
-package org.harmonograph.confusion.metrics;
+package org.harmonograph.confusion.metrics.complex;
 
-import org.harmonograph.confusion.metrics.simple.InfoGraphic;
-import java.awt.Color;
+import org.harmonograph.confusion.metrics.*;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import org.harmonograph.confusion.messages.TestResults;
-import org.harmonograph.confusion.metrics.simple.InfoGraphic.Elements;
 
 /**
- * Utility abstract metrics panel,
- * simply to avoid boilerplate.
- * Most panels should subclass this and implement
- * updateLabelString() to show the desired text.
+ * Metrics panel for ROC Curve.
+ * 
  * @author Dave
  */
-public abstract class AbstractMetricsPanel implements MetricsPanel {
+public class MetricsPanelRocCurve implements MetricsPanel {
 
     /** Main Panel for Confusion Matrix. */
     protected final JPanel m_panel;      
@@ -29,8 +25,8 @@ public abstract class AbstractMetricsPanel implements MetricsPanel {
      * which is the contents of this panel. */
     protected final JLabel m_label;    
     
-    /** Generic gas gauge. */
-    protected final GasGauge m_gas;
+    /** Plot for ROC Curve.  */
+    protected final RocCurvePlot m_plot;
     
     /** Name of this panel. */
     protected String m_name;
@@ -38,10 +34,9 @@ public abstract class AbstractMetricsPanel implements MetricsPanel {
     /** 
      * Simple Constructor.
      * 
-     * @param name Name of this panel 
      */
-    public AbstractMetricsPanel(final String name) {
-        m_name = name;
+    public MetricsPanelRocCurve() {
+        m_name = "ROC Curve";
         m_panel = new JPanel();
         m_panel.setLayout(new GridBagLayout());
         
@@ -54,32 +49,18 @@ public abstract class AbstractMetricsPanel implements MetricsPanel {
             c.weighty = 1f;
             c.fill = GridBagConstraints.BOTH;
             m_panel.add(m_label, c);
-      }       
-        
-      { 
-            final Elements[] elements = updateGraphic();
-            if (elements.length > 0) {
-                final InfoGraphic graphic = new InfoGraphic(elements);
-
-                final GridBagConstraints c = new GridBagConstraints();
-                c.gridx = 2;
-                c.gridy = 1;
-                c.weightx = .1f;
-                c.weighty = .1f;                
-                //c.fill = GridBagConstraints.BOTH;
-                m_panel.add(graphic.getPanel(), c);
-            }
-        }           
-        
+        }       
+           
+   
         {
-            m_gas = new GasGauge(Color.CYAN);
+            m_plot = new RocCurvePlot();
             final GridBagConstraints c = new GridBagConstraints();
             c.gridx = 3;
             c.gridy = 1;
             c.weighty = 1f;
             c.weighty = .1f;
             c.fill = GridBagConstraints.VERTICAL;
-            m_panel.add(m_gas, c);
+            m_panel.add(m_plot, c);
         }          
         
         
@@ -92,8 +73,8 @@ public abstract class AbstractMetricsPanel implements MetricsPanel {
        final String labelText = updateLabelString(testResults);
        m_label.setText(labelText);
        
-       final float level = updateGas(testResults);
-       m_gas.setLevel(level);
+       m_plot.processTestResults(testResults);
+       
     }
     
     /** 
@@ -102,27 +83,15 @@ public abstract class AbstractMetricsPanel implements MetricsPanel {
      * @param testResults Test results for update
      * @return formatted string for label
      */
-    public abstract String updateLabelString(final TestResults testResults);
-    
-    /** 
-     * Calculate value for gas gauge, range 0..1,
-     * representing normalized value of metric, if applicable.
-     * 
-     * @param testResults Test results for update
-     * @return Level for gas gauge, from 0 to 1
-     */
-    public float updateGas(final TestResults testResults) {
-        return 0f;
+    public String updateLabelString(final TestResults testResults) {
+        final StringBuilder out = new StringBuilder();
+        out.append("<html>");
+        out.append("Receiver Operating Characteristic (ROC)<p>");
+        out.append("Plot of True Positive Rate(TPR)<p>vs.False Positive Rate (FPR)<p>");
+        out.append("</html>");
+        return out.toString(); 
     }
     
-    /** 
-     * Get data for graphic. 
-     * 
-     * @return Graphic elements
-     */
-    public InfoGraphic.Elements[] updateGraphic() {
-        return new InfoGraphic.Elements[] {};
-    }
     
     /** {@inheritDoc} */
     @Override

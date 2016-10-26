@@ -4,6 +4,20 @@
  */
 package org.harmonograph.confusion.metrics;
 
+import org.harmonograph.confusion.metrics.compound.MetricsPanelMattCorrCoef;
+import org.harmonograph.confusion.metrics.compound.MetricsPanelNegativeLikelihoodRatio;
+import org.harmonograph.confusion.metrics.compound.MetricsPanelPositiveLikelihoodRatio;
+import org.harmonograph.confusion.metrics.compound.MetricsPanelDiagnosticOddsRatio;
+import org.harmonograph.confusion.metrics.compound.MetricsPanelF1Score;
+import org.harmonograph.confusion.metrics.simple.MetricsPanelPrevalence;
+import org.harmonograph.confusion.metrics.simple.MetricsPanelFalseDiscoveryRate;
+import org.harmonograph.confusion.metrics.simple.MetricsPanelTruePositiveRate;
+import org.harmonograph.confusion.metrics.simple.MetricsPanelPositivePredictedValue;
+import org.harmonograph.confusion.metrics.simple.MetricsPanelAccuracy;
+import org.harmonograph.confusion.metrics.simple.MetricsPanelFalsePositiveRate;
+import org.harmonograph.confusion.metrics.simple.MetricsPanelFalseNegativeRate;
+import org.harmonograph.confusion.metrics.simple.MetricsPanelFalseOmissionRate;
+import org.harmonograph.confusion.metrics.simple.MetricsPanelTrueNegativeRate;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.util.ArrayList;
@@ -11,6 +25,7 @@ import java.util.List;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import org.harmonograph.confusion.messages.TestResultsDistributor;
+import org.harmonograph.confusion.metrics.complex.MetricsPanelRocCurve;
 
 /**
  * The Metrics panel contains a collection of tabs,
@@ -50,6 +65,8 @@ public class MetricsMainPanel {
         m_subPanels.add(new MetricsPanelDiagnosticOddsRatio());
         m_subPanels.add(new MetricsPanelF1Score());
         m_subPanels.add(new MetricsPanelMattCorrCoef());
+        
+        m_subPanels.add(new MetricsPanelRocCurve());
         
        
         // Add any new panels here

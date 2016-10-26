@@ -2,7 +2,7 @@
  * (C) 2016 by Dave Helms (dave.helms.home@gmail.com)
  *  Released under the GPL 3.
  */
-package org.harmonograph.confusion.metrics;
+package org.harmonograph.confusion.metrics.simple;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;

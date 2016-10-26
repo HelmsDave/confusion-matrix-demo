@@ -4,6 +4,7 @@
  */
 package org.harmonograph.confusion.threshold;
 
+import org.harmonograph.confusion.messages.Threshold;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;

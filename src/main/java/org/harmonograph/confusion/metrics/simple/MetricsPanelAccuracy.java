@@ -2,11 +2,12 @@
  * (C) 2016 by Dave Helms (dave.helms.home@gmail.com)
  *  Released under the GPL 3.
  */
-package org.harmonograph.confusion.metrics;
+package org.harmonograph.confusion.metrics.simple;
 
 import org.harmonograph.confusion.messages.ColorScheme;
 import org.harmonograph.confusion.messages.TestResults;
-import org.harmonograph.confusion.metrics.InfoGraphic.Elements;
+import org.harmonograph.confusion.metrics.AbstractMetricsPanel;
+import org.harmonograph.confusion.metrics.simple.InfoGraphic.Elements;
 
 /**
  * MetricsPanel for Accuracy formula.
@@ -25,7 +26,7 @@ public class MetricsPanelAccuracy extends AbstractMetricsPanel {
      * @param results Test Results
      * @return Accuracy
      */
-    protected static float getAccuracy(final TestResults results) {
+    public static float getAccuracy(final TestResults results) {
        final float accuracy = 
                (float)(results.getTruePositive() + results.getTrueNegative()) /
                        (float)TestResults.POPULATION_SIZE;     

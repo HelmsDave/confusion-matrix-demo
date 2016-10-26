@@ -1,4 +1,4 @@
-package org.harmonograph.confusion.threshold;
+package org.harmonograph.confusion.messages;
 
 /*
  * (C) 2016 by Dave Helms (dave.helms.home@gmail.com)
@@ -14,7 +14,7 @@ package org.harmonograph.confusion.threshold;
 public class Threshold {
     
     /** Arbitrary maximum value, for visual plot. (assume min of 0).*/
-    protected final static float MAX = 100f;    
+    public final static float MAX = 100f;    
     /** Noise Mean. */
     protected final float m_noiseMean;
     /** Noise Standard Deviation. */
