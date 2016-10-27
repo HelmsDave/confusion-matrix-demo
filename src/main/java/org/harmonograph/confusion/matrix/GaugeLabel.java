@@ -81,6 +81,8 @@ public class GaugeLabel extends JLabel {
            fill += height;
            g2d.setColor(ColorScheme.TRUE_POS_COLOR);
            g2d.fillRect(0, getHeight()-fill, getWidth(), height);
+           
+           
        }
        if (m_trueNegative) {    
            final int height = (int)(getHeight() * 

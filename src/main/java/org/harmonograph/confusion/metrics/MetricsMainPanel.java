@@ -27,6 +27,8 @@ import javax.swing.JTabbedPane;
 import org.harmonograph.confusion.messages.TestResultsDistributor;
 import org.harmonograph.confusion.metrics.complex.MetricsPanelPrecisionRecallCurve;
 import org.harmonograph.confusion.metrics.complex.MetricsPanelRocCurve;
+import org.harmonograph.confusion.metrics.compound.MetricsPanelMarkedness;
+import org.harmonograph.confusion.metrics.compound.MetricsPanelYoudendsJ;
 
 /**
  * The Metrics panel contains a collection of tabs,
@@ -66,6 +68,10 @@ public class MetricsMainPanel {
         m_subPanels.add(new MetricsPanelDiagnosticOddsRatio());
         m_subPanels.add(new MetricsPanelF1Score());
         m_subPanels.add(new MetricsPanelMattCorrCoef());
+        m_subPanels.add(new MetricsPanelYoudendsJ());
+        m_subPanels.add(new MetricsPanelMarkedness());
+        
+        
         
         m_subPanels.add(new MetricsPanelRocCurve());
         m_subPanels.add(new MetricsPanelPrecisionRecallCurve());
