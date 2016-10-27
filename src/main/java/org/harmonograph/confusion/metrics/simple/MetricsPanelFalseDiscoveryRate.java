@@ -22,7 +22,7 @@ public class MetricsPanelFalseDiscoveryRate extends AbstractMetricsPanel {
     /**
      * Calculate FDR.
      * @param results Test Results
-     * @return Precision
+     * @return FDR
      */
     protected static float getFDR(final TestResults results) {
        final float fdr = 

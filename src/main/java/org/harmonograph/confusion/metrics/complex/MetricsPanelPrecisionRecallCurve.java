@@ -12,11 +12,11 @@ import javax.swing.JPanel;
 import org.harmonograph.confusion.messages.TestResults;
 
 /**
- * Metrics panel for ROC Curve.
+ * Metrics panel for Precision Recall Curve.
  * 
  * @author Dave
  */
-public class MetricsPanelRocCurve implements MetricsPanel {
+public class MetricsPanelPrecisionRecallCurve implements MetricsPanel {
 
     /** Main Panel for Confusion Matrix. */
     protected final JPanel m_panel;      
@@ -25,8 +25,8 @@ public class MetricsPanelRocCurve implements MetricsPanel {
      * which is the contents of this panel. */
     protected final JLabel m_label;    
     
-    /** Plot for ROC Curve.  */
-    protected final RocCurvePlot m_plot;
+    /** Plot for Precision Recall Curve.  */
+    protected final PrecisionRecallCurvePlot m_plot;
     
     /** Name of this panel. */
     protected String m_name;
@@ -35,8 +35,8 @@ public class MetricsPanelRocCurve implements MetricsPanel {
      * Simple Constructor.
      * 
      */
-    public MetricsPanelRocCurve() {
-        m_name = "ROC Curve";
+    public MetricsPanelPrecisionRecallCurve() {
+        m_name = "Precision Recall Curve";
         m_panel = new JPanel();
         m_panel.setLayout(new GridBagLayout());
         
@@ -53,7 +53,7 @@ public class MetricsPanelRocCurve implements MetricsPanel {
            
    
         {
-            m_plot = new RocCurvePlot();
+            m_plot = new PrecisionRecallCurvePlot();
             final GridBagConstraints c = new GridBagConstraints();
             c.gridx = 3;
             c.gridy = 1;
@@ -83,14 +83,14 @@ public class MetricsPanelRocCurve implements MetricsPanel {
     public String updateLabelString(final TestResults testResults) {
         final StringBuilder out = new StringBuilder();
         out.append("<html>");
-        out.append("Receiver Operating Characteristic (ROC)<p>");
-        out.append("Plot of True Positive Rate(TPR)<p>");
-        out.append("vs. False Positive Rate (FPR)<p>");
+        out.append("Precision Recall Curve<p>");
+        out.append("Plot of Precision (Positive Predictive Value)<p>");
+        out.append("vs. Recall(True Positive Rate)<p>");
         out.append("</html>");
         return out.toString(); 
     }
     
-    
+
     /** {@inheritDoc} */
     @Override
     public JPanel getPanel() {

@@ -22,7 +22,7 @@ public class MetricsPanelTrueNegativeRate extends AbstractMetricsPanel {
     /**
      * Calculate True Negative Rate.
      * @param results Test Results
-     * @return Precision
+     * @return True Negative Rate
      */
     public static float getTNR(final TestResults results) {
        final float tnr = 

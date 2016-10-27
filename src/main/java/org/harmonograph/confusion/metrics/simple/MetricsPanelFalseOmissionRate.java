@@ -22,7 +22,7 @@ public class MetricsPanelFalseOmissionRate extends AbstractMetricsPanel {
     /**
      * Calculate FOR.
      * @param results Test Results
-     * @return Precision
+     * @return FOR
      */
     public static float getFOR(final TestResults results) {
        final float falseOmissionTate = 

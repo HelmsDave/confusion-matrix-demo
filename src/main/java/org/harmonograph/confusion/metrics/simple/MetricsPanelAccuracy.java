@@ -55,6 +55,7 @@ public class MetricsPanelAccuracy extends AbstractMetricsPanel {
              
         final StringBuilder out = new StringBuilder();
         out.append("<html>");
+         out.append("Accuracy, aka. Fraction Correct<p>");
         out.append("Accuracy = (").append(ColorScheme.HTML_TRUE_POS_TEXT).append(" + ")
                    .append(ColorScheme.HTML_TRUE_NEG_TEXT).append(") / Total Population<p>");
         

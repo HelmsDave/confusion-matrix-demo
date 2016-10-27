@@ -25,6 +25,7 @@ import java.util.List;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import org.harmonograph.confusion.messages.TestResultsDistributor;
+import org.harmonograph.confusion.metrics.complex.MetricsPanelPrecisionRecallCurve;
 import org.harmonograph.confusion.metrics.complex.MetricsPanelRocCurve;
 
 /**
@@ -67,8 +68,8 @@ public class MetricsMainPanel {
         m_subPanels.add(new MetricsPanelMattCorrCoef());
         
         m_subPanels.add(new MetricsPanelRocCurve());
+        m_subPanels.add(new MetricsPanelPrecisionRecallCurve());
         
-       
         // Add any new panels here
         
         m_tabbedPane = new JTabbedPane();

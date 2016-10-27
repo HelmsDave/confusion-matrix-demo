@@ -20,9 +20,9 @@ public class MetricsPanelFalseNegativeRate extends AbstractMetricsPanel {
     }
     
     /**
-     * Calculate FalsePositiveRate.
+     * Calculate False Positive Rate.
      * @param results Test Results
-     * @return Precision
+     * @return False Positive Rate
      */
     public static float getFNR(final TestResults results) {
        final float fnr = 

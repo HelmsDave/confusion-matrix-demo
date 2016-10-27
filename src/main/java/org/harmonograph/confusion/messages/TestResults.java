@@ -4,6 +4,8 @@
  */
 package org.harmonograph.confusion.messages;
 
+import org.harmonograph.confusion.threshold.CalculateResultsUtil;
+
 /**
  * Data class representing test results from a threshold test.
  * The majority of the GUI is updated from to this message.
@@ -36,10 +38,7 @@ public class TestResults {
     
     /** Default instance, just for kicks. */
     public static final TestResults DEFAULT = 
-            new TestResults(
-                    POPULATION_SIZE/4, POPULATION_SIZE/4, 
-                    POPULATION_SIZE/4, POPULATION_SIZE/4, 
-                    Threshold.DEFAULT);
+            CalculateResultsUtil.calculateResults(Threshold.DEFAULT);
     
     /** Simple Constructor. 
      *  Sum of parameters should be POPULATION_SIZE.

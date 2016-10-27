@@ -22,7 +22,7 @@ public class MetricsPanelNegativePredictiveValue extends AbstractMetricsPanel {
     /**
      * Calculate NPV.
      * @param results Test Results
-     * @return Precision
+     * @return NPV
      */
     public static float getNPV(final TestResults results) {
        final float npv = 

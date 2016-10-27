@@ -23,7 +23,7 @@ public class MetricsPanelPrevalence extends AbstractMetricsPanel {
     /**
      * Calculate Prevalence.
      * @param results Test Results
-     * @return Precision
+     * @return Prevalence
      */
     public static float getPrevalence(final TestResults results) {
        final float prevalence = 

@@ -11,15 +11,15 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import org.harmonograph.confusion.messages.TestResults;
 import org.harmonograph.confusion.messages.Threshold;
-import org.harmonograph.confusion.metrics.simple.MetricsPanelFalsePositiveRate;
+import org.harmonograph.confusion.metrics.simple.MetricsPanelPositivePredictedValue;
 import org.harmonograph.confusion.metrics.simple.MetricsPanelTruePositiveRate;
 import org.harmonograph.confusion.threshold.CalculateResultsUtil;
 
 /**
- * Plot proper for ROC curve.
+ * Plot proper for Precision Recall curve.
  * @author Dave
  */
-public class RocCurvePlot extends JPanel {
+public class PrecisionRecallCurvePlot extends JPanel {
     
     /** Test Results. */
     protected TestResults m_results = TestResults.DEFAULT;
@@ -28,7 +28,7 @@ public class RocCurvePlot extends JPanel {
     /** 
      * Simple Constructor. 
      */
-    public RocCurvePlot() {
+    public PrecisionRecallCurvePlot() {
         super();
         setMinimumSize(new Dimension(200, 200));
         setPreferredSize(new Dimension(200, 200));
@@ -53,9 +53,9 @@ public class RocCurvePlot extends JPanel {
         final Graphics2D g2d = (Graphics2D) g;
 
         g2d.drawString("0", 0, getHeight() - g2d.getFontMetrics().getHeight());
-        g2d.drawString("TPR", 0, g2d.getFontMetrics().getHeight());
-        g2d.drawString("FPR", 
-                getWidth() - g2d.getFontMetrics().stringWidth("TPR"), 
+        g2d.drawString("Precision", 0, g2d.getFontMetrics().getHeight());
+        g2d.drawString("Recall", 
+                getWidth() - g2d.getFontMetrics().stringWidth("Recall"), 
                 getHeight());
              
         int lastX = getWidth();
@@ -70,21 +70,21 @@ public class RocCurvePlot extends JPanel {
                     m_results.getThreshold().getSkew());
             final TestResults r = CalculateResultsUtil.calculateResults(t);
 
-            final float TPR = MetricsPanelTruePositiveRate.getTPR(r);
-            final float FPR = MetricsPanelFalsePositiveRate.getFPR(r);
+            final float precision = MetricsPanelPositivePredictedValue.getPPV(r);
+            final float recall = MetricsPanelTruePositiveRate.getTPR(r);
 
-            final int x = (int) (FPR * getWidth());
-            final int y = (int) (getHeight() - TPR * getHeight());
+            final int x = (int) (recall * getWidth());
+            final int y = (int) (getHeight() - precision * getHeight());
             g2d.drawLine(lastX, lastY, x, y);
             lastX = x;
             lastY = y;
         }
 
-        final float TPR = MetricsPanelTruePositiveRate.getTPR(m_results);
-        final float FPR = MetricsPanelFalsePositiveRate.getFPR(m_results);
+        final float precision = MetricsPanelPositivePredictedValue.getPPV(m_results);
+        final float recall = MetricsPanelTruePositiveRate.getTPR(m_results);
 
-        g2d.drawRect((int) (FPR * getWidth() - 3),
-                (int) (getHeight() - TPR * getHeight()) - 3, 7, 7);
+        g2d.drawRect((int) (recall * getWidth() - 3),
+                (int) (getHeight() - precision * getHeight()) - 3, 7, 7);
         
         g2d.drawRect(0, 0, getWidth()-1, getHeight()-1);
         g2d.setColor(Color.LIGHT_GRAY);
