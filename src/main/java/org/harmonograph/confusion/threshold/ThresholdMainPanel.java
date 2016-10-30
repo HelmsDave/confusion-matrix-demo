@@ -25,8 +25,8 @@ public class ThresholdMainPanel {
     /** Canvas for PDF plot. */
     protected final ThresholdCanvas m_canvas;
     
-    /** Controls panel. */
-    protected final ThresholdControls m_controls;
+    ///** Controls panel. */
+    //protected final ThresholdControls m_controls;
     
     /** Simple Constructor. */
     public ThresholdMainPanel() {
@@ -38,7 +38,7 @@ public class ThresholdMainPanel {
         m_panel.setBorder(title);        
         m_panel.setToolTipText(
                 "<html>Measurement Space<p>with Noise and Signal PDF<p>" + 
-                        "Adjust sliders to change PDF and Threshold</html>");
+                        "Adjust controls to change PDF and Threshold</html>");
         
         {
             m_canvas = new ThresholdCanvas();
@@ -50,15 +50,15 @@ public class ThresholdMainPanel {
             c.fill = GridBagConstraints.BOTH;
             m_panel.add(m_canvas.getPanel(), c);
         }
-        {
-            m_controls = new ThresholdControls(m_canvas);
-            final GridBagConstraints c = new GridBagConstraints();
-            c.gridx = 1;
-            c.gridy = 2;
-            c.weightx = 0.5f;          
-            c.fill = GridBagConstraints.HORIZONTAL;
-            m_panel.add(m_controls.getPanel(), c);
-        }
+//        {
+//            m_controls = new ThresholdControls(m_canvas);
+//            final GridBagConstraints c = new GridBagConstraints();
+//            c.gridx = 1;
+//            c.gridy = 2;
+//            c.weightx = 0.5f;          
+//            c.fill = GridBagConstraints.HORIZONTAL;
+//            m_panel.add(m_controls.getPanel(), c);
+//        }
         
     }
     
