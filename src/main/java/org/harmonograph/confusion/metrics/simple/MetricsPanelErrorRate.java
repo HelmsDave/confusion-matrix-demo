@@ -10,41 +10,41 @@ import org.harmonograph.confusion.metrics.AbstractMetricsPanel;
 import org.harmonograph.confusion.metrics.simple.InfoGraphic.Elements;
 
 /**
- * MetricsPanel for Accuracy formula.
+ * MetricsPanel for Error Rate formula.
  * @author Dave
  */
-public class MetricsPanelAccuracy extends AbstractMetricsPanel {
+public class MetricsPanelErrorRate extends AbstractMetricsPanel {
       
     /** Simple Constructor. */
-    public MetricsPanelAccuracy() {
-        super("Accuracy");
+    public MetricsPanelErrorRate() {
+        super("Error Rate");
     }
     
     
     /**
-     * Calculate Accuracy.
+     * Calculate Error Rate.
      * @param results Test Results
-     * @return Accuracy
+     * @return Error Rate
      */
-    public static float getAccuracy(final TestResults results) {
-       final float accuracy = 
-               (float)(results.getTruePositive() + results.getTrueNegative()) /
+    public static float getErrorRate(final TestResults results) {
+       final float errorRate = 
+               (float)(results.getFalsePositive() + results.getFalseNegative()) /
                        (float)TestResults.POPULATION_SIZE;     
        
-       return accuracy;
+       return errorRate;
     }
     
     /** {@inheritDoc} */
     @Override 
     public float updateGas(final TestResults results) {
-        return getAccuracy(results);
+        return getErrorRate(results);
     }    
     
     /** {@inheritDoc} */
     @Override     
     public Elements[] updateGraphic() {
         return new Elements[] {
-            Elements.NUM_TRUE_POS, Elements.NUM_TRUE_NEG,
+            Elements.NUM_FALSE_POS, Elements.NUM_FALSE_NEG,
             Elements.DENOM_FALSE_NEG, Elements.DENOM_FALSE_POS,
             Elements.DENOM_TRUE_NEG, Elements.DENOM_TRUE_POS};
     }    
@@ -55,15 +55,14 @@ public class MetricsPanelAccuracy extends AbstractMetricsPanel {
              
         final StringBuilder out = new StringBuilder();
         out.append("<html>");
-        out.append("Accuracy, aka. Fraction Correct, Classification Accuracy<p>");
-        out.append("Proportion of total population which are classified correctly.<br>");
-        out.append("Accuracy = (").append(ColorScheme.HTML_TRUE_POS_TEXT).append(" + ")
-                   .append(ColorScheme.HTML_TRUE_NEG_TEXT).append(") / Total Population<p>");
+        out.append("Proportion of total population which are classified incorrectly.<br>");
+        out.append("Error Rate = (").append(ColorScheme.HTML_FALSE_POS_TEXT).append(" + ")
+                   .append(ColorScheme.HTML_FALSE_NEG_TEXT).append(") / Total Population<p>");
         
         out.append(String.format("%.3f = (%s + %s) / %s<p>",
-               getAccuracy(results), 
-               TestResults.format(results.getTruePositive()),
-               TestResults.format(results.getTrueNegative()),
+               getErrorRate(results), 
+               TestResults.format(results.getFalsePositive()),
+               TestResults.format(results.getFalseNegative()),
                TestResults.format(TestResults.POPULATION_SIZE)));
        
         out.append("</html>");

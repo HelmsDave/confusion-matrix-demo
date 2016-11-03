@@ -16,7 +16,7 @@ public class MetricsPanelF1Score extends AbstractMetricsPanel {
       
     /** Simple Constructor. */
     public MetricsPanelF1Score() {
-        super("F1 Score");
+        super("<html>F1<br>Score</html>");
     }
     
     

@@ -17,7 +17,7 @@ public class MetricsPanelYoudendsJ extends AbstractMetricsPanel {
       
     /** Simple Constructor. */
     public MetricsPanelYoudendsJ() {
-        super("Youden's J Statistic");
+        super("<html>Youden's<br>J Statistic<html>");
     }
     
     /**

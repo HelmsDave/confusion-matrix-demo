@@ -54,6 +54,7 @@ public class MetricsPanelFalsePositiveRate extends AbstractMetricsPanel {
         final StringBuilder out = new StringBuilder();
         out.append("<html>");
         out.append("False Positive Rate, aka. FPR, Fall-out<p>");
+        out.append("Proportion of acutal negative which are predicted as positive.<br>");
         out.append("FPR = ").append(ColorScheme.HTML_FALSE_POS_TEXT).append(" / (")
                    .append(ColorScheme.HTML_TRUE_NEG_TEXT).append(" + ")
                    .append(ColorScheme.HTML_FALSE_POS_TEXT).append(")<p>");

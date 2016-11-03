@@ -55,9 +55,9 @@ public class InfoGraphic {
         final List<Elements> elementsList = Arrays.asList(elements);
         m_panel = new JPanel();
         m_panel.setLayout(new GridBagLayout());
-        m_panel.setMinimumSize(new Dimension(50, 100));
-        m_panel.setPreferredSize(new Dimension(50, 100));
-        m_panel.setMaximumSize(new Dimension(100, 200));
+        m_panel.setMinimumSize(new Dimension(40, 80));
+        m_panel.setPreferredSize(new Dimension(40, 80));
+        m_panel.setMaximumSize(new Dimension(40, 80));
         m_panel.setBorder(BorderFactory.createLineBorder(m_panel.getForeground()));
         
         final String numeratorTooltipText = 

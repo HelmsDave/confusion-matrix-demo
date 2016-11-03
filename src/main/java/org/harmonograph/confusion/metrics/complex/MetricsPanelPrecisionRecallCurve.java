@@ -29,14 +29,14 @@ public class MetricsPanelPrecisionRecallCurve implements MetricsPanel {
     protected final PrecisionRecallCurvePlot m_plot;
     
     /** Name of this panel. */
-    protected String m_name;
+    protected final String m_name;
     
     /** 
      * Simple Constructor.
      * 
      */
     public MetricsPanelPrecisionRecallCurve() {
-        m_name = "Precision Recall Curve";
+        m_name = "<html>Precision Recall<br>Curve</html>";
         m_panel = new JPanel();
         m_panel.setLayout(new GridBagLayout());
         

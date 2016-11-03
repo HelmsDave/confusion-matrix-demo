@@ -16,7 +16,7 @@ public class MetricsPanelMattCorrCoef extends AbstractMetricsPanel {
       
     /** Simple Constructor. */
     public MetricsPanelMattCorrCoef() {
-        super("Matthews Correlation Coefficient");
+        super("<html>Matthews<br>Correlation Coefficient</html>");
     }
     
     

@@ -12,11 +12,11 @@ import javax.swing.JPanel;
 import org.harmonograph.confusion.messages.TestResults;
 
 /**
- * Metrics panel for ROC Curve.
+ * Metrics panel for Lift Chart.
  * 
  * @author Dave
  */
-public class MetricsPanelRocCurve implements MetricsPanel {
+public class MetricsPanelLiftChart implements MetricsPanel {
 
     /** Main Panel for Confusion Matrix. */
     protected final JPanel m_panel;      
@@ -25,8 +25,8 @@ public class MetricsPanelRocCurve implements MetricsPanel {
      * which is the contents of this panel. */
     protected final JLabel m_label;    
     
-    /** Plot for ROC Curve.  */
-    protected final RocCurvePlot m_plot;
+    /** Plot for Lift Plot proper.  */
+    protected final LiftPlot m_plot;
     
     /** Name of this panel. */
     protected String m_name;
@@ -35,8 +35,8 @@ public class MetricsPanelRocCurve implements MetricsPanel {
      * Simple Constructor.
      * 
      */
-    public MetricsPanelRocCurve() {
-        m_name = "<html>ROC<br>Curve</html>";
+    public MetricsPanelLiftChart() {
+        m_name = "<html>Lift<br>Plot</html>";
         m_panel = new JPanel();
         m_panel.setLayout(new GridBagLayout());
         
@@ -53,7 +53,7 @@ public class MetricsPanelRocCurve implements MetricsPanel {
            
    
         {
-            m_plot = new RocCurvePlot();
+            m_plot = new LiftPlot();
             final GridBagConstraints c = new GridBagConstraints();
             c.gridx = 3;
             c.gridy = 1;
@@ -83,9 +83,9 @@ public class MetricsPanelRocCurve implements MetricsPanel {
     public String updateLabelString(final TestResults testResults) {
         final StringBuilder out = new StringBuilder();
         out.append("<html>");
-        out.append("Receiver Operating Characteristic (ROC)<p>");
+        out.append("Lift Plot, Cumlative Lift Plot<p>");
         out.append("Plot of True Positive Rate(TPR)<p>");
-        out.append("vs. False Positive Rate (FPR)<p>");
+        out.append("vs. Portion of population predicted positive<p>");
         out.append("</html>");
         return out.toString(); 
     }

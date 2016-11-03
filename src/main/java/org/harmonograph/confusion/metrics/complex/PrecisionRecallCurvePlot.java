@@ -11,7 +11,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import org.harmonograph.confusion.messages.TestResults;
 import org.harmonograph.confusion.messages.Threshold;
-import org.harmonograph.confusion.metrics.simple.MetricsPanelPositivePredictedValue;
+import org.harmonograph.confusion.metrics.simple.MetricsPanelPositivePredictiveValue;
 import org.harmonograph.confusion.metrics.simple.MetricsPanelTruePositiveRate;
 import org.harmonograph.confusion.threshold.CalculateResultsUtil;
 
@@ -56,7 +56,7 @@ public class PrecisionRecallCurvePlot extends JPanel {
         g2d.drawString("Precision", 0, g2d.getFontMetrics().getHeight());
         g2d.drawString("Recall", 
                 getWidth() - g2d.getFontMetrics().stringWidth("Recall"), 
-                getHeight());
+                getHeight() - g2d.getFontMetrics().getHeight()/2);
              
         int lastX = getWidth();
         int lastY = 0;
@@ -70,7 +70,7 @@ public class PrecisionRecallCurvePlot extends JPanel {
                     m_results.getThreshold().getSkew());
             final TestResults r = CalculateResultsUtil.calculateResults(t);
 
-            final float precision = MetricsPanelPositivePredictedValue.getPPV(r);
+            final float precision = MetricsPanelPositivePredictiveValue.getPPV(r);
             final float recall = MetricsPanelTruePositiveRate.getTPR(r);
 
             final int x = (int) (recall * getWidth());
@@ -80,14 +80,14 @@ public class PrecisionRecallCurvePlot extends JPanel {
             lastY = y;
         }
 
-        final float precision = MetricsPanelPositivePredictedValue.getPPV(m_results);
+        final float precision = MetricsPanelPositivePredictiveValue.getPPV(m_results);
         final float recall = MetricsPanelTruePositiveRate.getTPR(m_results);
 
         g2d.drawRect((int) (recall * getWidth() - 3),
                 (int) (getHeight() - precision * getHeight()) - 3, 7, 7);
         
-        g2d.drawRect(0, 0, getWidth()-1, getHeight()-1);
         g2d.setColor(Color.LIGHT_GRAY);
+        g2d.drawRect(0, 0, getWidth()-1, getHeight()-1);
         final int tics = 5;
         for (int index = 1; index < tics; ++index) { 
             g2d.drawLine(0, index*getHeight()/tics, getWidth(), index*getHeight()/tics);

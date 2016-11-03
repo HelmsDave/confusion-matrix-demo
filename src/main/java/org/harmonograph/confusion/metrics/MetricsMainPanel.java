@@ -12,7 +12,7 @@ import org.harmonograph.confusion.metrics.compound.MetricsPanelF1Score;
 import org.harmonograph.confusion.metrics.simple.MetricsPanelPrevalence;
 import org.harmonograph.confusion.metrics.simple.MetricsPanelFalseDiscoveryRate;
 import org.harmonograph.confusion.metrics.simple.MetricsPanelTruePositiveRate;
-import org.harmonograph.confusion.metrics.simple.MetricsPanelPositivePredictedValue;
+import org.harmonograph.confusion.metrics.simple.MetricsPanelPositivePredictiveValue;
 import org.harmonograph.confusion.metrics.simple.MetricsPanelAccuracy;
 import org.harmonograph.confusion.metrics.simple.MetricsPanelFalsePositiveRate;
 import org.harmonograph.confusion.metrics.simple.MetricsPanelFalseNegativeRate;
@@ -25,10 +25,15 @@ import java.util.List;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import org.harmonograph.confusion.messages.TestResultsDistributor;
+import org.harmonograph.confusion.metrics.complex.MetricsPanelLiftChart;
 import org.harmonograph.confusion.metrics.complex.MetricsPanelPrecisionRecallCurve;
 import org.harmonograph.confusion.metrics.complex.MetricsPanelRocCurve;
+import org.harmonograph.confusion.metrics.compound.MetricsPanelBalancedAccuracy;
+import org.harmonograph.confusion.metrics.compound.MetricsPanelBalancedErrorRate;
 import org.harmonograph.confusion.metrics.compound.MetricsPanelMarkedness;
 import org.harmonograph.confusion.metrics.compound.MetricsPanelYoudendsJ;
+import org.harmonograph.confusion.metrics.simple.MetricsPanelErrorRate;
+import org.harmonograph.confusion.metrics.simple.MetricsPanelNegativePredictiveValue;
 
 /**
  * The Metrics panel contains a collection of tabs,
@@ -51,30 +56,52 @@ public class MetricsMainPanel {
     public MetricsMainPanel() {
         
         m_subPanels = new ArrayList<>();
-        m_subPanels.add(new MetricsPanelAccuracy());
+        
         m_subPanels.add(new MetricsPanelPrevalence());
-       
-        m_subPanels.add(new MetricsPanelPositivePredictedValue());
-        m_subPanels.add(new MetricsPanelTrueNegativeRate());
-        m_subPanels.add(new MetricsPanelTruePositiveRate());
         
-        m_subPanels.add(new MetricsPanelFalseDiscoveryRate());
-        m_subPanels.add(new MetricsPanelFalseNegativeRate());
-        m_subPanels.add(new MetricsPanelFalseOmissionRate());
-        m_subPanels.add(new MetricsPanelFalsePositiveRate());        
+        m_subPanels.add(new MetricsPanelPair(
+            new MetricsPanelAccuracy(), 
+            new MetricsPanelErrorRate()));
+
+        m_subPanels.add(new MetricsPanelPair(
+                new MetricsPanelPositivePredictiveValue(),
+                new MetricsPanelTruePositiveRate(),
+                "<html>Precision<br>Recall</html>"));
         
-        m_subPanels.add(new MetricsPanelPositiveLikelihoodRatio());  
-        m_subPanels.add(new MetricsPanelNegativeLikelihoodRatio());    
+        m_subPanels.add(new MetricsPanelPair(
+                new MetricsPanelTruePositiveRate(),
+                new MetricsPanelTrueNegativeRate(),
+                "<html>Sensitivity<br>Specificity</html>"));
+
+        m_subPanels.add(new MetricsPanelPair(
+            new MetricsPanelPositivePredictiveValue(), 
+            new MetricsPanelNegativePredictiveValue()));        
+        
+        m_subPanels.add(new MetricsPanelPair(
+                new MetricsPanelFalsePositiveRate(),
+                new MetricsPanelFalseNegativeRate()));
+        
+        m_subPanels.add(new MetricsPanelPair(
+                new MetricsPanelFalseDiscoveryRate(),
+                new MetricsPanelFalseOmissionRate()));
+              
+        m_subPanels.add(new MetricsPanelPair(
+            new MetricsPanelPositiveLikelihoodRatio(),
+            new MetricsPanelNegativeLikelihoodRatio()));    
+        
+        m_subPanels.add(new MetricsPanelPair(
+            new MetricsPanelBalancedAccuracy(),
+            new MetricsPanelBalancedErrorRate()));
+        
         m_subPanels.add(new MetricsPanelDiagnosticOddsRatio());
         m_subPanels.add(new MetricsPanelF1Score());
         m_subPanels.add(new MetricsPanelMattCorrCoef());
         m_subPanels.add(new MetricsPanelYoudendsJ());
         m_subPanels.add(new MetricsPanelMarkedness());
         
-        
-        
         m_subPanels.add(new MetricsPanelRocCurve());
         m_subPanels.add(new MetricsPanelPrecisionRecallCurve());
+        m_subPanels.add(new MetricsPanelLiftChart());
         
         // Add any new panels here
         

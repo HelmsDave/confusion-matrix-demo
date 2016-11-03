@@ -9,14 +9,14 @@ import org.harmonograph.confusion.messages.TestResults;
 import org.harmonograph.confusion.metrics.AbstractMetricsPanel;
 
 /**
- * MetricsPanel for Positive Predicted Value formula.
+ * MetricsPanel for Positive Predictive Value formula.
  * @author Dave
  */
-public class MetricsPanelPositivePredictedValue extends AbstractMetricsPanel {
+public class MetricsPanelPositivePredictiveValue extends AbstractMetricsPanel {
       
     /** Simple Constructor. */
-    public MetricsPanelPositivePredictedValue() {
-        super("Positive Predicted Value");
+    public MetricsPanelPositivePredictiveValue() {
+        super("Positive Predictive Value");
     }
     
     /**
@@ -54,6 +54,8 @@ public class MetricsPanelPositivePredictedValue extends AbstractMetricsPanel {
         final StringBuilder out = new StringBuilder();
         out.append("<html>");
         out.append("Positive Predicted Value (PPV), aka. Precision<p>");
+        out.append("Proportion of predicted positive which are actual positive.<br>");
+
         out.append("PPV = ").append(ColorScheme.HTML_TRUE_POS_TEXT).append(" / (")
                    .append(ColorScheme.HTML_TRUE_POS_TEXT).append(" + ")
                    .append(ColorScheme.HTML_FALSE_POS_TEXT).append(")<p>");

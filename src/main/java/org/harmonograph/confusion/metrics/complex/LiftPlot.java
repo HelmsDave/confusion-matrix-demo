@@ -11,15 +11,14 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import org.harmonograph.confusion.messages.TestResults;
 import org.harmonograph.confusion.messages.Threshold;
-import org.harmonograph.confusion.metrics.simple.MetricsPanelFalsePositiveRate;
 import org.harmonograph.confusion.metrics.simple.MetricsPanelTruePositiveRate;
 import org.harmonograph.confusion.threshold.CalculateResultsUtil;
 
 /**
- * Plot proper for ROC curve.
+ * Plot proper for Lift Chart.
  * @author Dave
  */
-public class RocCurvePlot extends JPanel {
+public class LiftPlot extends JPanel {
     
     /** Test Results. */
     protected TestResults m_results = TestResults.DEFAULT;
@@ -28,7 +27,7 @@ public class RocCurvePlot extends JPanel {
     /** 
      * Simple Constructor. 
      */
-    public RocCurvePlot() {
+    public LiftPlot() {
         super();
         setMinimumSize(new Dimension(200, 200));
         setPreferredSize(new Dimension(200, 200));
@@ -54,9 +53,9 @@ public class RocCurvePlot extends JPanel {
 
         g2d.drawString("0", 0, getHeight() - g2d.getFontMetrics().getHeight());
         g2d.drawString("TPR", 0, g2d.getFontMetrics().getHeight());
-        g2d.drawString("FPR", 
-                getWidth() - g2d.getFontMetrics().stringWidth("TPR"), 
-                getHeight() - g2d.getFontMetrics().getHeight()/2);
+        g2d.drawString("Predicted Positive", 
+                getWidth() - g2d.getFontMetrics().stringWidth("Predicted Positive"), 
+                getHeight()- g2d.getFontMetrics().getHeight()/2);
              
         int lastX = getWidth();
         int lastY = 0;
@@ -71,9 +70,11 @@ public class RocCurvePlot extends JPanel {
             final TestResults r = CalculateResultsUtil.calculateResults(t);
 
             final float TPR = MetricsPanelTruePositiveRate.getTPR(r);
-            final float FPR = MetricsPanelFalsePositiveRate.getFPR(r);
 
-            final int x = (int) (FPR * getWidth());
+            final float PredictedTrue = (float)r.getPredictedTrue()/
+                                        (float)r.getPopulationTotal();
+
+            final int x = (int) (PredictedTrue * getWidth());
             final int y = (int) (getHeight() - TPR * getHeight());
             g2d.drawLine(lastX, lastY, x, y);
             lastX = x;
@@ -81,9 +82,10 @@ public class RocCurvePlot extends JPanel {
         }
 
         final float TPR = MetricsPanelTruePositiveRate.getTPR(m_results);
-        final float FPR = MetricsPanelFalsePositiveRate.getFPR(m_results);
+        final float PredictedTrue = (float)m_results.getPredictedTrue()/
+                                    (float)m_results.getPopulationTotal();
 
-        g2d.drawRect((int) (FPR * getWidth() - 3),
+        g2d.drawRect((int) (PredictedTrue * getWidth() - 3),
                 (int) (getHeight() - TPR * getHeight()) - 3, 7, 7);
         
         g2d.setColor(Color.LIGHT_GRAY);

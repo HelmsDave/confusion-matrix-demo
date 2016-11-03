@@ -54,6 +54,7 @@ public class MetricsPanelPrevalence extends AbstractMetricsPanel {
              
         final StringBuilder out = new StringBuilder();
         out.append("<html>");
+        out.append("Proportion of total population which are actual positive.<br>");
         out.append("Prevalence = (").append(ColorScheme.HTML_TRUE_POS_TEXT).append(" + ")
                    .append(ColorScheme.HTML_FALSE_NEG_TEXT).append(") / Total Population<p>");
         

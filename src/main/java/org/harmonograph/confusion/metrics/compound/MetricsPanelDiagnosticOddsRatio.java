@@ -15,7 +15,7 @@ public class MetricsPanelDiagnosticOddsRatio extends AbstractMetricsPanel {
       
     /** Simple Constructor. */
     public MetricsPanelDiagnosticOddsRatio() {
-        super("Diagnostic Odds Ratio");
+        super("<html>Diagnostic<br>Odds Ratio</html>");
     }
     
     /**
