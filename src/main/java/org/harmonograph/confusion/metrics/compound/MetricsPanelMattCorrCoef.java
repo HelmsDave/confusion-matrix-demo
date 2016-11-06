@@ -50,7 +50,7 @@ public class MetricsPanelMattCorrCoef extends AbstractMetricsPanel {
              
         final StringBuilder out = new StringBuilder();
         out.append("<html>");
-        out.append("MCC = ")
+        out.append("Matthews Correlation Coefficient, MCC = ")
                 .append(ColorScheme.HTML_TRUE_POS_TEXT_SHORT).append("*")
                 .append(ColorScheme.HTML_TRUE_NEG_TEXT_SHORT).append(" - ")
                 .append(ColorScheme.HTML_FALSE_POS_TEXT_SHORT).append("*")

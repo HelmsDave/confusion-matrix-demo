@@ -52,7 +52,7 @@ public class MetricsPanelFalseDiscoveryRate extends AbstractMetricsPanel {
         
         final StringBuilder out = new StringBuilder();
         out.append("<html>");
-        out.append("False Discovery Rate, aka. FDR<p>");
+        out.append("False Discovery Rate, FDR<p>");
         out.append("Proportion of predicted positive which are actual negative.<br>");
         out.append("FDR = ").append(ColorScheme.HTML_FALSE_POS_TEXT).append(" / (")
                    .append(ColorScheme.HTML_TRUE_POS_TEXT).append(" + ")

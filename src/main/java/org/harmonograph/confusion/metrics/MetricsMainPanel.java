@@ -30,6 +30,8 @@ import org.harmonograph.confusion.metrics.complex.MetricsPanelPrecisionRecallCur
 import org.harmonograph.confusion.metrics.complex.MetricsPanelRocCurve;
 import org.harmonograph.confusion.metrics.compound.MetricsPanelBalancedAccuracy;
 import org.harmonograph.confusion.metrics.compound.MetricsPanelBalancedErrorRate;
+import org.harmonograph.confusion.metrics.compound.MetricsPanelBayes;
+import org.harmonograph.confusion.metrics.compound.MetricsPanelInformedness;
 import org.harmonograph.confusion.metrics.compound.MetricsPanelMarkedness;
 import org.harmonograph.confusion.metrics.compound.MetricsPanelYoudendsJ;
 import org.harmonograph.confusion.metrics.simple.MetricsPanelErrorRate;
@@ -93,15 +95,19 @@ public class MetricsMainPanel {
             new MetricsPanelBalancedAccuracy(),
             new MetricsPanelBalancedErrorRate()));
         
+        m_subPanels.add(new MetricsPanelPair(
+            new MetricsPanelInformedness(),
+            new MetricsPanelMarkedness()));
+        
         m_subPanels.add(new MetricsPanelDiagnosticOddsRatio());
         m_subPanels.add(new MetricsPanelF1Score());
         m_subPanels.add(new MetricsPanelMattCorrCoef());
         m_subPanels.add(new MetricsPanelYoudendsJ());
-        m_subPanels.add(new MetricsPanelMarkedness());
-        
+       
         m_subPanels.add(new MetricsPanelRocCurve());
         m_subPanels.add(new MetricsPanelPrecisionRecallCurve());
         m_subPanels.add(new MetricsPanelLiftChart());
+        m_subPanels.add(new MetricsPanelBayes());
         
         // Add any new panels here
         

@@ -43,6 +43,7 @@ public class MetricsPanelDiagnosticOddsRatio extends AbstractMetricsPanel {
         
         final StringBuilder out = new StringBuilder();
         out.append("<html>");
+        out.append("A measure of the effectiveness of a diagnostic test.<br>");
         out.append("Diagnostic Odds Ratio (DOR)<p>");
         out.append("DOR = (LR+) / (LR-)<p>");
         

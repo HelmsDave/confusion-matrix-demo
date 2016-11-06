@@ -53,7 +53,7 @@ public class MetricsPanelPositivePredictiveValue extends AbstractMetricsPanel {
         
         final StringBuilder out = new StringBuilder();
         out.append("<html>");
-        out.append("Positive Predicted Value (PPV), aka. Precision<p>");
+        out.append("Positive Predicted Value (PPV), Precision<p>");
         out.append("Proportion of predicted positive which are actual positive.<br>");
 
         out.append("PPV = ").append(ColorScheme.HTML_TRUE_POS_TEXT).append(" / (")

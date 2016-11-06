@@ -48,6 +48,9 @@ public class MetricsPanelF1Score extends AbstractMetricsPanel {
              
         final StringBuilder out = new StringBuilder();
         out.append("<html>");
+        out.append("F1 Score, F Score, F Measure<br>");
+        out.append("A measure of a test's accuracy.<br>");
+        out.append("The harmonic mean of precision and recall.<br>");
         out.append("F1 Score = 2*").append(ColorScheme.HTML_TRUE_POS_TEXT_SHORT).append(" / ")
                    .append("(2*").append(ColorScheme.HTML_TRUE_POS_TEXT_SHORT).append(" + ")
                    .append(ColorScheme.HTML_FALSE_POS_TEXT_SHORT).append(" + ")

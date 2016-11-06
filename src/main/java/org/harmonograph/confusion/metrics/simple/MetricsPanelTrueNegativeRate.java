@@ -53,7 +53,7 @@ public class MetricsPanelTrueNegativeRate extends AbstractMetricsPanel {
        
         final StringBuilder out = new StringBuilder();
         out.append("<html>");
-        out.append("True Negative Rate, aka. TNR, Specificity<p>");
+        out.append("True Negative Rate, TNR, Specificity<p>");
         out.append("Proportion of actual negative which are predicted negative.<br>");
         out.append("FPR = ").append(ColorScheme.HTML_TRUE_NEG_TEXT).append(" / (")
                    .append(ColorScheme.HTML_TRUE_NEG_TEXT).append(" + ")

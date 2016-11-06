@@ -10,33 +10,35 @@ import org.harmonograph.confusion.metrics.simple.MetricsPanelTrueNegativeRate;
 import org.harmonograph.confusion.metrics.simple.MetricsPanelTruePositiveRate;
 
 /**
- * MetricsPanel for Youden's J statistic formula.
+ * MetricsPanel for Informedness formula.
  * @author Dave
  */
-public class MetricsPanelYoudendsJ extends AbstractMetricsPanel {
+public class MetricsPanelInformedness extends AbstractMetricsPanel {
       
     /** Simple Constructor. */
-    public MetricsPanelYoudendsJ() {
-        super("<html>Youden's<br>J Statistic<html>");
+    public MetricsPanelInformedness() {
+        super("Informedness");
     }
     
     /**
-     * Calculate Youden's J statistic.
+     * Calculate Informedness.
      * @param results Test Results
-     * @return Youden's J statistic
+     * @return Informedness
      */
-    protected static float getYoudendsJ(final TestResults results) {
-       final float youdendsJ = 
+    //  Sensitivity + Specificity ? 1
+    protected static float getInformedness(final TestResults results) {
+       final float informedness = 
                MetricsPanelTruePositiveRate.getTPR(results) +
-               MetricsPanelTrueNegativeRate.getTNR(results) - 1;
+               MetricsPanelTrueNegativeRate.getTNR(results) - 1;       
        
-       return youdendsJ;
+       
+       return informedness;
     }
     
     /** {@inheritDoc} */
     @Override 
     public float updateGas(final TestResults results) {
-        return getYoudendsJ(results);
+        return getInformedness(results);
     }
     
     /** {@inheritDoc} */
@@ -45,14 +47,14 @@ public class MetricsPanelYoudendsJ extends AbstractMetricsPanel {
         
         final StringBuilder out = new StringBuilder();
         out.append("<html>");
-        out.append("Youden's J statistic, Youden's index, J<p>");
-        out.append("J = Sensitivity + Specificity - 1<p>");
+        out.append("Informedness<p>");
+        out.append("Informedness = Sensitivity + Specificity - 1<p>");
         
         out.append(String.format("%.3f = %.3f + %.3f - 1<p>",
-               getYoudendsJ(results), 
+               getInformedness(results),                
                MetricsPanelTruePositiveRate.getTPR(results),
                MetricsPanelTrueNegativeRate.getTNR(results)));
-        
+
         out.append("</html>");
         return out.toString();        
     }

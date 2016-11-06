@@ -53,7 +53,7 @@ public class MetricsPanelNegativePredictiveValue extends AbstractMetricsPanel {
        
         final StringBuilder out = new StringBuilder();
         out.append("<html>");
-        out.append("Negative Predictive Value, aka. NPV<p>");
+        out.append("Negative Predictive Value, NPV<p>");
         out.append("Proportion of predicted negative which are actual negative.<br>");
         out.append("NPV = ").append(ColorScheme.HTML_TRUE_NEG_TEXT).append(" / (")
                    .append(ColorScheme.HTML_TRUE_NEG_TEXT).append(" + ")

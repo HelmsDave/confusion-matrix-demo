@@ -53,7 +53,7 @@ public class MetricsPanelTruePositiveRate extends AbstractMetricsPanel {
         
         final StringBuilder out = new StringBuilder();
         out.append("<html>");
-        out.append("Recall, aka. Sensitivity, True Positive Rate<p>");
+        out.append("Recall, Sensitivity, True Positive Rate<p>");
         out.append("Proportion of actual positives which are predicted positive.<br>");
         out.append("Recall = ").append(ColorScheme.HTML_TRUE_POS_TEXT).append(" / (")
                    .append(ColorScheme.HTML_TRUE_POS_TEXT).append(" + ")

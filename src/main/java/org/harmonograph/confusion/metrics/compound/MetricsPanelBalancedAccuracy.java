@@ -50,7 +50,8 @@ public class MetricsPanelBalancedAccuracy extends AbstractMetricsPanel {
              
         final StringBuilder out = new StringBuilder();
         out.append("<html>");
-        out.append("Balanced Accuracy (BACC), aka. Balanced Classification Rate<br>");
+        out.append("Balanced Accuracy (BACC), Balanced Classification Rate<br>");
+        out.append("Arithmetic average of Sensitivity and Specificity.<br>");
         out.append("BACC = (").append(ColorScheme.HTML_TRUE_POS_TEXT_SHORT).append("/(")
                    .append(ColorScheme.HTML_TRUE_POS_TEXT_SHORT).append("+")
                    .append(ColorScheme.HTML_FALSE_NEG_TEXT_SHORT).append(") + ")

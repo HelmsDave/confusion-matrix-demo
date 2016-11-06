@@ -52,7 +52,7 @@ public class MetricsPanelFalseOmissionRate extends AbstractMetricsPanel {
         
         final StringBuilder out = new StringBuilder();
         out.append("<html>");
-        out.append("False Omission Rate, aka. FDR<p>");
+        out.append("False Omission Rate, FDR<p>");
         out.append("Proportion of predicted negative which are actual positive.<br>");
         out.append("FOR = ").append(ColorScheme.HTML_FALSE_NEG_TEXT).append(" / (")
                    .append(ColorScheme.HTML_TRUE_NEG_TEXT).append(" + ")

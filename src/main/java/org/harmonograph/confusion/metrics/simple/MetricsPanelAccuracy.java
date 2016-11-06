@@ -55,7 +55,7 @@ public class MetricsPanelAccuracy extends AbstractMetricsPanel {
              
         final StringBuilder out = new StringBuilder();
         out.append("<html>");
-        out.append("Accuracy, aka. Fraction Correct, Classification Accuracy<p>");
+        out.append("Accuracy, Fraction Correct, Classification Accuracy<p>");
         out.append("Proportion of total population which are classified correctly.<br>");
         out.append("Accuracy = (").append(ColorScheme.HTML_TRUE_POS_TEXT).append(" + ")
                    .append(ColorScheme.HTML_TRUE_NEG_TEXT).append(") / Total Population<p>");
